@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgHinhMonAn"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/item340_03" />
+
+    <TextView
+        android:id="@+id/txtTenMonAn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgHinhMonAn"
+        android:layout_alignStart="@+id/imgHinhMonAn"
+        android:layout_below="@+id/imgHinhMonAn"
+        android:layout_marginLeft="30dp"
+        android:text="Mắm chung"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+</RelativeLayout>

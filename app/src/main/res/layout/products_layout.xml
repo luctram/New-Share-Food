@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarLoaiMonAn"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colortoolbarchitiet"
+        android:layout_weight="1"></android.support.v7.widget.Toolbar>
+
+    <ProgressBar
+        android:id="@+id/progressBarProduct"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="440dp"
+        android:horizontalSpacing="15px"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="15px"
+        android:layout_weight="8"/>
+
+    <Button
+        android:id="@+id/buttonBepchien"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/footer_18"
+        android:fontFamily="@font/font_franchise"
+        android:text="BẾP CHIẾN"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:layout_weight="1"/>
+</LinearLayout>

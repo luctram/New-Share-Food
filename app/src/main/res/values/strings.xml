@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="title" translatable="false">S  H  A  R  E  F  O  O  D</string>
+    <string name="btnVaobep">VÀO BẾP</string>
+    <string name="btnDangnhap">Sign in</string>
+    <string name="txtBanner">You can\'t make an omelette without breaking eggs</string>
+    <string name="app_name">ShareFood</string>
+
+</resources>
