@@ -23,7 +23,7 @@ public class CategoryInteractor {
 
     public void createCategoryList() {
         final ArrayList<Category> categoriesList = new ArrayList<>();
-        myRef.child("Categories").addValueEventListener(new ValueEventListener() {
+        myRef.child("Categories").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 categoriesList.clear();

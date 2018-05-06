@@ -1,6 +1,7 @@
 package com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TabHost;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.R;
+import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 import com.ptit.tranhoangminh.newsharefood.presenters.productDetailPresenters.ProductDetailPresenter;
@@ -29,7 +32,7 @@ import com.ptit.tranhoangminh.newsharefood.presenters.productDetailPresenters.Pr
 
 public class ProductDetailActivity extends AppCompatActivity implements ProductDetailView {
     Toolbar toolbar;
-    Product objectKey;
+    Product productKey;
     TabHost tabHost;
     TextView tvCommentNum;
     TextView tvLike;
@@ -47,13 +50,15 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.productdetail_layout);
-        objectKey = (Product) getIntent().getSerializableExtra("objectKey");
+        setContentView(R.layout.product_detail_layout);
+        productKey = (Product) getIntent().getSerializableExtra("objectKey");
         setControl();
-        setEvents();
-        setTabHost();
+
         initPresenter();
-        productDetailPresenter.loadProductDetail(objectKey.getId(), objectKey.getImage());
+        productDetailPresenter.loadProductDetail(productKey.getId(), productKey.getImage());
+
+        setTabHost();
+        setEvents();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("CHI TIẾT MÓN ĂN ");
@@ -78,12 +83,20 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     void setEvents() {
-        cbLike.setOnClickListener(new View.OnClickListener() {
+        cbLike.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    productDetailPresenter.liked(productKey);
+                } else {
+                    productDetailPresenter.unLike(productKey.getId());
+                }
             }
         });
+    }
+
+    private void initPresenter() {
+        productDetailPresenter = new ProductDetailPresenter(this, this);
     }
 
     void setTabHost() {
@@ -111,10 +124,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
         tabHost.addTab(tabSpec4);
     }
 
-    private void initPresenter() {
-        productDetailPresenter = new ProductDetailPresenter(this);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -124,8 +133,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            super.onBackPressed();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+            case R.id.menuDaluu:
+                Intent intent = new Intent(this, SavedProductActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -139,6 +154,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     public void hideProgress() {
         pgbProductDetail.setVisibility(View.GONE);
     }
+
     @Override
     public void displayMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -146,7 +162,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 
     @Override
     public void displayProductDetail(ProductDetail productDetail, Bitmap bitmap) {
-        tvTenmon.setText(objectKey.getName());
+        tvTenmon.setText(productKey.getName());
         tvCommentNum.setText(productDetail.getCommentcount() + " bình luận");
         tvLike.setText(productDetail.getLike() + " yêu thích");
         tvMaterials.setText(productDetail.getMaterials());
@@ -154,5 +170,15 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
         tvVideo.setText(productDetail.getVideo());
         tvComment.setText(productDetail.getComment());
         imgHinhmon.setImageBitmap(bitmap);
+    }
+
+    @Override
+    public void setLike(int i) {
+        tvLike.setText(String.valueOf(i) + " yêu thích");
+    }
+
+    @Override
+    public void setCheckedLike(boolean b) {
+        cbLike.setChecked(b);
     }
 }

@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".views.addEditProductViews.activities.AddEditProductActivity" />
+        <activity android:name=".views.savedProductViews.activities.SavedProductActivity"></activity>
     </application>
 
 </manifest>

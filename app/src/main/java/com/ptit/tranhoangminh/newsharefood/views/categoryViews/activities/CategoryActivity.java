@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Category;
 import com.ptit.tranhoangminh.newsharefood.presenters.categoryPresenters.CategoryPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.categoryViews.adapters.CategoryAdapter;
+import com.ptit.tranhoangminh.newsharefood.adapters.CategoryAdapter;
 import com.ptit.tranhoangminh.newsharefood.views.productViews.activities.ProductActivity;
 
 import java.util.ArrayList;

@@ -31,10 +31,10 @@ public class ProductInteractor {
 
     public void createProductList(final String cate_id) {
         final ArrayList<Product> productList = new ArrayList<>();
-        myRef.child("Products").addValueEventListener(new ValueEventListener() {
+        myRef.child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                productList.clear();
+                //productList.clear();
                 Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
                 for (DataSnapshot item : iterable) {
                     Product pd = item.getValue(Product.class);
@@ -67,7 +67,7 @@ public class ProductInteractor {
     }
 
     private void destroyProductDetailOnFirebase(final String id, final String image_id) {
-        myRef.child("ProductDetail").addValueEventListener(new ValueEventListener() {
+        myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();

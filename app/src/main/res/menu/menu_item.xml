@@ -5,11 +5,7 @@
         android:icon="@drawable/itemblack_05"
         android:title="Tìm kiếm"
         app:showAsAction="always"></item>
-    <item
-        android:id="@+id/menuThemmon"
-        android:icon="@mipmap/ic_add_black_24dp"
-        android:title="Thêm"
-        app:showAsAction="always"></item>
+
     <item
         android:icon="@mipmap/ic_more_vert_white_36dp"
         android:title="menu"
@@ -18,7 +14,14 @@
             <item
                 android:icon="@drawable/icon_12"
                 android:title="Đăng nhập"></item>
-
+            <item
+                android:id="@+id/menuThemmon"
+                android:icon="@mipmap/ic_add_black_24dp"
+                android:title="Thêm"></item>
+            <item
+                android:id="@+id/menuDaluu"
+                android:icon="@mipmap/gmail"
+                android:title="Đã lưu"></item>
             <item
                 android:icon="@mipmap/ic_add_alert_black_24dp"
                 android:title="Thông báo"></item>

@@ -8,4 +8,8 @@ public interface LoadProductDetailListener {
     void onLoadProductDetailSuccess(ProductDetail productDetail, Bitmap bitmap);
 
     void onLoadProductDetailFailure(String message);
+
+    void onLikeSuccess(int i);
+
+    void onLikeFailure(String message);
 }

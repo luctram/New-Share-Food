@@ -25,7 +25,7 @@ import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.P
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.presenters.productPresenters.ProductPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.productViews.adapters.ProductAdapter;
+import com.ptit.tranhoangminh.newsharefood.adapters.ProductAdapter;
 
 import java.util.ArrayList;
 

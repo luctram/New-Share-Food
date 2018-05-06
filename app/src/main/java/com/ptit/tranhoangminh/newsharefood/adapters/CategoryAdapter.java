@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.categoryViews.adapters;
+package com.ptit.tranhoangminh.newsharefood.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

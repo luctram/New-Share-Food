@@ -12,4 +12,8 @@ public interface ProductDetailView {
     public void displayMessage(String message);
 
     public void displayProductDetail(ProductDetail productDetail, Bitmap bitmap);
+
+    public void setLike(int i);
+
+    public void setCheckedLike(boolean b);
 }

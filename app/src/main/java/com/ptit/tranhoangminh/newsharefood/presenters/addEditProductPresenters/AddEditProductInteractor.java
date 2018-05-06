@@ -32,7 +32,7 @@ public class AddEditProductInteractor {
     }
 
     public void createEditProduct(final String id, final String image_id) {
-        myRef.child("ProductDetail").addValueEventListener(new ValueEventListener() {
+        myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();

@@ -13,7 +13,8 @@ public class ProductDetail {
     private String video;
     private String comment;
 
-    public  ProductDetail() {}
+    public ProductDetail() {
+    }
 
     public ProductDetail(int commentcount, int like, String materials, String recipe, String video, String comment) {
         this.commentcount = commentcount;
@@ -88,5 +89,13 @@ public class ProductDetail {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void addLike(int i) {
+        this.like += i;
+    }
+
+    public void removeLike(int i) {
+        this.like -= i;
     }
 }
