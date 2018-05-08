@@ -76,9 +76,10 @@ public class ProductDetailInteractor {
         });
     }
 
-    public void addProductSqlite(Product product) {
+    public void addProductSqlite(Product product, ProductDetail pDetail, Bitmap bitmap) {
         try {
-            db.addProduct(product);
+            db.addProduct(product, bitmap);
+            db.addProductDetail(pDetail);
         } catch (SQLiteException ex) {
             listener.onLikeFailure("Failed to add product. " + ex.getMessage());
         }
@@ -86,6 +87,7 @@ public class ProductDetailInteractor {
 
     public void removeProductSqlite(String id) {
         db.deleteProduct(id);
+        db.deleteProductDetail(id);
     }
 
     public void addLike(final String id) {

@@ -1,11 +1,13 @@
 package com.ptit.tranhoangminh.newsharefood.presenters.categoryPresenters;
 
-import com.ptit.tranhoangminh.newsharefood.models.Category;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.ptit.tranhoangminh.newsharefood.models.Category;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 public class CategoryInteractor {
     private DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+    private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
     private LoadCategoriesListener listener;
 
     public CategoryInteractor(LoadCategoriesListener listener) {
@@ -23,10 +26,9 @@ public class CategoryInteractor {
 
     public void createCategoryList() {
         final ArrayList<Category> categoriesList = new ArrayList<>();
-        myRef.child("Categories").addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.child("Categories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                categoriesList.clear();
                 Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
                 for (DataSnapshot item : iterable) {
                     Category cate = item.getValue(Category.class);
@@ -40,5 +42,11 @@ public class CategoryInteractor {
                 listener.onLoadCategoriesFailure("Failed to read categories. " + databaseError.toException());
             }
         });
+    }
+
+    private String getImageFileFromFireBase(String image) {
+        final String[] path = new String[1];
+
+        return path[0];
     }
 }

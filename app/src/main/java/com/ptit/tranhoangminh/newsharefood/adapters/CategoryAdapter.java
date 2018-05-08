@@ -62,8 +62,8 @@ public class CategoryAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
             holder = new ViewHolder();
-            holder.txtTen = (TextView) convertView.findViewById(R.id.textTenloai);
-            holder.image = (ImageView) convertView.findViewById(R.id.imageHinhloai);
+            holder.txtTen = convertView.findViewById(R.id.textTenloai);
+            holder.image = convertView.findViewById(R.id.imageHinhloai);
             convertView.setTag(holder);
 
         } else {
@@ -72,9 +72,7 @@ public class CategoryAdapter extends BaseAdapter {
 
         Category category = categoryList.get(position);
         holder.txtTen.setText(category.getName());
-
-        FirebaseReference.setImageFromFireBase(mStorageRef.child("Categories").child(category.getImage()),
-                category.getImage(), ".png", holder.image);
+        FirebaseReference.setImageFromFireBase(mStorageRef.child("Categories").child(category.getImage()),category.getImage(),".png",holder.image);
         return convertView;
     }
 }

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class ProductPresenter implements LoadProductsListener {
     private ProductView productView;
     private ProductInteractor productInteractor;
-    private String cate_id;
 
     public ProductPresenter(ProductView productView) {
         this.productView = productView;
@@ -21,7 +20,6 @@ public class ProductPresenter implements LoadProductsListener {
 
     public void loadProducts(String cate_id) {
         productView.showProgress();
-        this.cate_id = cate_id;
         productInteractor.createProductList(cate_id);
     }
 
@@ -40,7 +38,6 @@ public class ProductPresenter implements LoadProductsListener {
     public void destroyProductOnFirebase(String id, String image_id) {
         productView.showProgress();
         productInteractor.destroyProductOnFirebase(id,image_id);
-        //productInteractor.createProductList(cate_id);
     }
 
     @Override

@@ -1,12 +1,9 @@
-package com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.savedProductDetailViews.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TabHost;
@@ -22,16 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.R;
-import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
-import com.ptit.tranhoangminh.newsharefood.presenters.productDetailPresenters.ProductDetailPresenter;
+import com.ptit.tranhoangminh.newsharefood.presenters.savedProductDetailPresenters.SavedProductDetailPresenter;
+import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
 
-/**
- * Created by Dell on 3/11/2018.
- */
-
-public class ProductDetailActivity extends AppCompatActivity implements ProductDetailView {
+public class SavedProductDetailActivity extends AppCompatActivity implements SavedProductDetailView {
     Toolbar toolbar;
     TabHost tabHost;
     TextView tvCommentNum;
@@ -44,20 +36,19 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     TextView tvComment;
     ProgressBar pgbProductDetail;
     CheckBox cbLike;
-    ProductDetailPresenter productDetailPresenter;
+    SavedProductDetailPresenter savedProductDetailPresenter;
     Product productKey;
-    ProductDetail pDetail;
 
     @SuppressLint("RestrictedApi")
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_detail_layout);
         productKey = (Product) getIntent().getSerializableExtra("objectKey");
         setControl();
 
         initPresenter();
-        productDetailPresenter.loadProductDetail(productKey.getId(), productKey.getImage());
+        savedProductDetailPresenter.loadSavedProductDetail(productKey.getId());
 
         setTabHost();
         setEvents();
@@ -85,20 +76,10 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     void setEvents() {
-        cbLike.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    productDetailPresenter.liked(productKey, pDetail, ((BitmapDrawable)imgHinhmon.getDrawable()).getBitmap());
-                } else {
-                    productDetailPresenter.unLike(productKey.getId());
-                }
-            }
-        });
     }
 
     private void initPresenter() {
-        productDetailPresenter = new ProductDetailPresenter(this, this);
+        savedProductDetailPresenter = new SavedProductDetailPresenter(this, this);
     }
 
     void setTabHost() {
@@ -163,25 +144,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     @Override
-    public void displayProductDetail(ProductDetail productDetail, Bitmap bitmap) {
-        pDetail = productDetail;
+    public void displayProductDetail(ProductDetail productDetail) {
         tvTenmon.setText(productKey.getName());
-        tvCommentNum.setText(productDetail.getCommentcount() + " bình luận");
-        tvLike.setText(productDetail.getLike() + " yêu thích");
+        imgHinhmon.setImageBitmap(productKey.getByteasBitmap());
+        tvCommentNum.setText("Not found");
+        tvLike.setText("Not found");
         tvMaterials.setText(productDetail.getMaterials());
         tvRecipe.setText(productDetail.getRecipe());
-        tvVideo.setText(productDetail.getVideo());
-        tvComment.setText(productDetail.getComment());
-        imgHinhmon.setImageBitmap(bitmap);
-    }
-
-    @Override
-    public void setLike(int i) {
-        tvLike.setText(String.valueOf(i) + " yêu thích");
-    }
-
-    @Override
-    public void setCheckedLike(boolean b) {
-        cbLike.setChecked(b);
+        tvVideo.setText("Not found");
+        tvComment.setText("Not found");
     }
 }

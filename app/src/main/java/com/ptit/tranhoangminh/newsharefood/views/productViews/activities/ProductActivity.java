@@ -154,7 +154,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 alertDialog.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        productPresenter.destroyProductOnFirebase(pd.getId(),pd.getImage());
+                        productPresenter.destroyProductOnFirebase(pd.getId(), pd.getImage());
                     }
                 }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
@@ -180,9 +180,9 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
 
     @Override
     public void displayProducts(ArrayList<Product> productArrayList) {
-                this.productArrayList = productArrayList;
-                this.myAdapter = new ProductAdapter(ProductActivity.this, R.layout.dong_products, productArrayList);
-                gridView.setAdapter(myAdapter);
+        this.productArrayList = productArrayList;
+        this.myAdapter = new ProductAdapter(ProductActivity.this, R.layout.dong_products, productArrayList);
+        gridView.setAdapter(myAdapter);
     }
 
     @Override

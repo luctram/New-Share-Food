@@ -46,10 +46,10 @@ public class CategoryActivity extends AppCompatActivity implements CategoryView 
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white_24dp);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        SuKien();
+        setEvents();
     }
 
-    private void SuKien() {
+    private void setEvents() {
         lvMonAn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

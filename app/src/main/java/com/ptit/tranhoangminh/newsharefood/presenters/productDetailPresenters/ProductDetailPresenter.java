@@ -35,8 +35,8 @@ public class ProductDetailPresenter implements LoadProductDetailListener {
         productDetailView.hideProgress();
     }
 
-    public void liked(Product product) {
-        productDetailInteractor.addProductSqlite(product);
+    public void liked(Product product, ProductDetail pDetail, Bitmap bitmap) {
+        productDetailInteractor.addProductSqlite(product, pDetail, bitmap);
         productDetailInteractor.addLike(product.getId());
     }
 
