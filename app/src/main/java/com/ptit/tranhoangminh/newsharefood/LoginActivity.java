@@ -52,6 +52,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         btnDK.setOnClickListener(this);
         CreateClientLoginGG();
 
+
+
+        //hung
     }
 
     private void SetControl() {
