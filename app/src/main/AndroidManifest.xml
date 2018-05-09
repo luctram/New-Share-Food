@@ -17,7 +17,7 @@
         <activity android:name=".Splashscreen">
 
         </activity>
-       <activity android:name=".LoginActivity"> </activity>
+        <activity android:name=".LoginActivity"> </activity>
         <activity android:name=".views.Register.RegisterActivity"></activity>
         <activity android:name=".views.addEditProductViews.activities.AddEditProductActivity" />
         <activity android:name=".views.HomePageRes.HomePageResActivity">

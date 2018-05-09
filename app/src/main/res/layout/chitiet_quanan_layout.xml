@@ -196,7 +196,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         />
-                </Line arLayout>
+                </LinearLayout>
 
             </LinearLayout>
             <include
