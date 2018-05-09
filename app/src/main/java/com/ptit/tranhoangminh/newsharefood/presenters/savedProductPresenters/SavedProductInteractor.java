@@ -16,4 +16,9 @@ public class SavedProductInteractor {
     public void createSavedProductList() {
         listener.onLoadSavedProductsSuccess(db.getAllProducts());
     }
+
+    public void destroySavedProduct(String id) {
+        db.deleteProduct(id);
+        db.deleteProductDetail(id);
+    }
 }

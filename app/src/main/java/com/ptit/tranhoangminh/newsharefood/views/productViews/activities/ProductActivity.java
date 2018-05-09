@@ -118,7 +118,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 bundle.putString("cate_name", cate_name);
                 bundle.putInt("mode", ADD_MODE);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent,1111);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -144,7 +144,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 bundle.putSerializable("product", pd);
                 bundle.putInt("mode", EDIT_MODE);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, 1111);
                 break;
             case R.id.menuXoa:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ProductActivity.this);
@@ -155,17 +155,25 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         productPresenter.destroyProductOnFirebase(pd.getId(), pd.getImage());
+                        productPresenter.loadProducts(cate_id);
                     }
                 }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 alertDialog.show();
                 break;
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1111) {
+            productPresenter.loadProducts(cate_id);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
+import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
 import com.ptit.tranhoangminh.newsharefood.presenters.savedProductDetailPresenters.SavedProductDetailPresenter;
 import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
 
@@ -37,14 +38,14 @@ public class SavedProductDetailActivity extends AppCompatActivity implements Sav
     ProgressBar pgbProductDetail;
     CheckBox cbLike;
     SavedProductDetailPresenter savedProductDetailPresenter;
-    Product productKey;
+    ProductSQLite productKey;
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_detail_layout);
-        productKey = (Product) getIntent().getSerializableExtra("objectKey");
+        productKey = (ProductSQLite) getIntent().getSerializableExtra("objectKey");
         setControl();
 
         initPresenter();
