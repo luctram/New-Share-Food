@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.Adapter;
+package com.ptit.tranhoangminh.newsharefood.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

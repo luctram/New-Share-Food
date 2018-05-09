@@ -1,6 +1,5 @@
-package com.ptit.tranhoangminh.newsharefood.Adapter;
+package com.ptit.tranhoangminh.newsharefood.adapters;
 
-import android.accessibilityservice.GestureDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;

@@ -17,7 +17,11 @@
         <activity android:name=".views.productDetailViews.activities.ProductDetailActivity" />
         <activity android:name=".views.productViews.activities.ProductActivity" />
         <activity android:name=".Splashscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".views.Register.RegisterActivity" />
@@ -26,11 +30,7 @@
         <activity android:name=".views.savedProductDetailViews.activities.SavedProductDetailActivity" />
         <activity android:name=".views.StoreDetail.ChiTietQuanAnActivity" />
         <activity android:name=".views.HomePageRes.HomePageResActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.ptit.tranhoangminh.newsharefood.Adapter.AdapterRecycleViewStore;
+import com.ptit.tranhoangminh.newsharefood.adapters.AdapterRecycleViewStore;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.StoreModel;
 import com.ptit.tranhoangminh.newsharefood.presenters.DisplayStore.DisplayStorePresenterLogic;

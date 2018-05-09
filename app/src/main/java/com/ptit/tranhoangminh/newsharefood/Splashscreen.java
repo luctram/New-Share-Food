@@ -26,11 +26,12 @@ import com.ptit.tranhoangminh.newsharefood.views.categoryViews.activities.Catego
  * Created by Dell on 3/12/2018.
  */
 
-public class Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
-    Button btnVaobep,btnDangNhap;
+public class Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    Button btnVaobep, btnDangNhap;
     GoogleApiClient googleApiClient;
     public static final int REQUEST_PERMISSION_LOCATION = 1;
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +45,11 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
                 .build();
 
         //xin quyen .kiem tra xem nguoi dung da cap quyen chua.chua thi hien thi bang deny or allow
-        int checkPermissionCoarseLocaltion = ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION);
-        int checkPermissionFineLocation = ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION);
-        if(checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED && checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_PERMISSION_LOCATION);
-        }else{
+        int checkPermissionCoarseLocaltion = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        int checkPermissionFineLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED && checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_LOCATION);
+        } else {
             googleApiClient.connect();
         }
     }
@@ -57,55 +58,55 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case REQUEST_PERMISSION_LOCATION :
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        switch (requestCode) {
+            case REQUEST_PERMISSION_LOCATION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     googleApiClient.connect();
                 }
                 break;
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         googleApiClient.disconnect();
     }
+
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
         @SuppressLint("MissingPermission")
         Location vitriHienTai = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-        Log.d("vt",vitriHienTai.getLatitude()+"");
-        if(vitriHienTai !=null)
-        {
+        Log.d("vt", vitriHienTai.getLatitude() + "");
+        if (vitriHienTai != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("latitude", String.valueOf(vitriHienTai.getLatitude()));
             editor.putString("longitude", String.valueOf(vitriHienTai.getLongitude()));
             editor.commit();
-            Log.d("vitri",vitriHienTai.getLatitude()+" - "+vitriHienTai.getLongitude());
+            Log.d("vitri", vitriHienTai.getLatitude() + " - " + vitriHienTai.getLongitude());
         }
-        try {
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent iDangNhap = new Intent(Splashscreen.this,LoginActivity.class);
-                    startActivity(iDangNhap);
-                    finish();
-                }
-            },2000);
-        } catch (Exception e){
-        }
+        btnVaobep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iDangNhap = new Intent(Splashscreen.this, CategoryActivity.class);
+                startActivity(iDangNhap);
+                finish();
+            }
+        });
     }
+
     @Override
     public void onConnectionSuspended(int i) {
     }
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
+
     private void AnhXa() {
-        btnVaobep=findViewById(R.id.btnVaobep);
-        btnDangNhap=findViewById(R.id.btnDangnhap);
-        sharedPreferences = getSharedPreferences("toado",MODE_PRIVATE);
+        btnVaobep = findViewById(R.id.btnVaobep);
+        btnDangNhap = findViewById(R.id.btnDangnhap);
+        sharedPreferences = getSharedPreferences("toado", MODE_PRIVATE);
     }
 }
