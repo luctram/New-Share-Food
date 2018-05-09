@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout android:background="@color/colorAccent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/font_franchise"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/linearLogin"
+        android:text="REGISTER"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/linearLogin"
+        android:padding="15dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edtEmailDK"
+            android:drawablePadding="15dp"
+            android:singleLine="true"
+            android:drawableLeft="@mipmap/user"
+            android:paddingLeft="20dp"
+            android:hint="Email"
+            android:layout_margin="10dp"
+            android:background="@drawable/khung_dangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/edtPassDK"
+            android:drawablePadding="15dp"
+            android:password="true"
+            android:singleLine="true"
+            android:drawableLeft="@mipmap/password"
+            android:hint="Password"
+            android:paddingLeft="20dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/khung_dangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/edtPass2"
+            android:drawablePadding="15dp"
+            android:password="true"
+            android:singleLine="true"
+            android:drawableLeft="@mipmap/password"
+            android:hint="Password"
+            android:paddingLeft="20dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/khung_dangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/btnClickDK"
+            android:layout_margin="10dp"
+            android:textColor="#fff"
+            android:text="CREATE"
+            android:layout_gravity="center"
+            android:background="@drawable/btnvaobep_background"
+            android:layout_width="200dp"
+            android:layout_height="70dp" />
 
-</android.support.constraint.ConstraintLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

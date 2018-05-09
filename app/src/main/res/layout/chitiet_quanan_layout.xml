@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    >
+    <include
+        layout="@layout/layout_toolbar"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="?attr/actionBarSize"
+            >
+            <ImageView
+                android:id="@+id/imgHinhChiTiet"
+                android:src="@drawable/hinh"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:id="@+id/txtTenQuanAnCT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trà sữa Tokyo"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"/>
+
+
+                <TextView
+                    android:id="@+id/txtDiaChiCT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50 Man Thiện"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:id="@+id/txttongSoHinhAnhCT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="123"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:text="Tải ảnh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:id="@+id/txttongSoCheckInCT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="123"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:text="Check in"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:id="@+id/txttongSoBinhLuanCT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="123"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:text="Bình luận"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:id="@+id/tongSoLuuLai"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="123"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/txtTongSoLuuLaiCT"
+                            android:text="Chia sẻ"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+
+                    android:layout_marginTop="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    >
+                    <TextView
+                        android:id="@+id/txtThoiGianHoatDong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7:00 - 20:00"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/txtTrangThaiHoatDong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chưa mở cửa"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <include
+                layout="@layout/layout_comment"
+                />
+        </LinearLayout>
+</LinearLayout>
+
