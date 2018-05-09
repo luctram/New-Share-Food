@@ -20,6 +20,7 @@ import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.ptit.tranhoangminh.newsharefood.views.HomePageRes.HomePageResActivity;
 import com.ptit.tranhoangminh.newsharefood.views.categoryViews.activities.CategoryActivity;
 
 /**
@@ -89,7 +90,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         btnVaobep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iDangNhap = new Intent(Splashscreen.this, CategoryActivity.class);
+                Intent iDangNhap = new Intent(Splashscreen.this, LoginActivity.class);
                 startActivity(iDangNhap);
                 finish();
             }

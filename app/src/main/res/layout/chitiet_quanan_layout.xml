@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    >
-    <include
-        layout="@layout/layout_toolbar"
-        />
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/netScrollViewCT"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="?attr/actionBarSize"
+
             >
+
             <ImageView
                 android:id="@+id/imgHinhChiTiet"
-                android:src="@drawable/hinh"
-                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
-                android:layout_height="180dp" />
+                android:layout_height="180dp"
+                android:src="@drawable/hinh" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,57 +41,54 @@
                     android:id="@+id/txtTenQuanAnCT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
                     android:text="Trà sữa Tokyo"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold" />
 
 
                 <TextView
                     android:id="@+id/txtDiaChiCT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
                     android:text="50 Man Thiện"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    />
+                    android:textSize="15sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorPrimary"
                     android:layout_marginTop="10dp"
-                    />
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="5dp"
-                    >
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
                         android:layout_weight="1"
-                        >
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/txttongSoHinhAnhCT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="123"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Tải ảnh"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Tải ảnh"
 
                             />
 
@@ -94,114 +97,107 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
                         android:layout_weight="1"
-                        >
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/txttongSoCheckInCT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="123"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Check in"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            />
+                            android:text="Check in" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
                         android:layout_weight="1"
-                        >
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/txttongSoBinhLuanCT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="123"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Bình luận"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            />
+                            android:text="Bình luận" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
                         android:layout_weight="1"
-                        >
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tongSoLuuLai"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="123"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/txtTongSoLuuLaiCT"
-                            android:text="Chia sẻ"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            />
+                            android:text="Chia sẻ" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <View
-                    android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-
                     android:layout_marginTop="10dp"
-                    />
+
+                    android:background="@color/colorPrimary" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:padding="5dp"
-                    >
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
                     <TextView
                         android:id="@+id/txtThoiGianHoatDong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="7:00 - 20:00"
                         android:layout_weight="1"
-                        />
+                        android:text="7:00 - 20:00" />
 
                     <TextView
                         android:id="@+id/txtTrangThaiHoatDong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chưa mở cửa"
-                        android:textStyle="bold"
                         android:textSize="18sp"
-                        />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
-            <include
-                layout="@layout/layout_comment"
-                />
+
+            <include layout="@layout/layout_comment">
+
+            </include>
+
         </LinearLayout>
-</LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
 
