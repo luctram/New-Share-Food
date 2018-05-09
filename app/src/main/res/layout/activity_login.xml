@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout android:background="@color/colorAccent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ptit.tranhoangminh.newsharefood.LoginActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/font_franchise"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/linearLogin"
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/linearLogin"
+        android:padding="15dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edtEmail"
+            android:drawablePadding="15dp"
+            android:singleLine="true"
+            android:drawableLeft="@mipmap/user"
+            android:paddingLeft="20dp"
+            android:hint="Email"
+            android:layout_margin="10dp"
+            android:background="@drawable/khung_dangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/edtPass"
+            android:drawablePadding="15dp"
+            android:password="true"
+            android:singleLine="true"
+            android:drawableLeft="@mipmap/password"
+            android:hint="Password"
+            android:paddingLeft="20dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/khung_dangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/btnClick"
+            android:layout_margin="10dp"
+            android:textColor="#fff"
+            android:text="LOGIN"
+            android:layout_gravity="center"
+            android:background="@drawable/btnvaobep_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <Button
+        android:layout_marginBottom="5dp"
+        android:text="Sign in"
+        android:padding="5dp"
+        android:drawableLeft="@mipmap/gmail"
+        android:background="#fff"
+        android:id="@+id/btnGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+    </Button>
+       <!-- <com.facebook.login.widget.LoginButton
+            android:id="@+id/btnFB"
+            app:com_facebook_login_text="SIGN IN WITH FACEBOOK"
+           android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />-->
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:text="Now user ?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnDangKi"
+                android:text="Sign up "
+                android:background="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

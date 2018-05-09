@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ptit.tranhoangminh.newsharefood">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,14 +15,19 @@
         <activity android:name=".views.productDetailViews.activities.ProductDetailActivity" />
         <activity android:name=".views.productViews.activities.ProductActivity" />
         <activity android:name=".Splashscreen">
+
+        </activity>
+       <activity android:name=".LoginActivity"> </activity>
+        <activity android:name=".views.Register.RegisterActivity"></activity>
+        <activity android:name=".views.addEditProductViews.activities.AddEditProductActivity" />
+        <activity android:name=".views.HomePageRes.HomePageResActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".views.addEditProductViews.activities.AddEditProductActivity" />
+        <activity android:name=".views.StoreDetail.ChiTietQuanAnActivity"></activity>
     </application>
 
 </manifest>
