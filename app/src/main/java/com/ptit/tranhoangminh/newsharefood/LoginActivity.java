@@ -53,8 +53,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         CreateClientLoginGG();
 
 
-
-        //hung
+        //minh
     }
 
     private void SetControl() {
