@@ -210,6 +210,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return productList;
     }
 
+    public List<Product> searchProducts(String name) {
+        Log.i(TAG, "DatabaseHelper.searchProducts...");
+
+        List<Product> productList = new ArrayList<>();
+        //Select all query
+        String query = "SELECT * FROM " + TABLE_PRODUCTS +" WHERE name LIKE '%"+name+"%'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        //duyet tren con tro va them vao list
+        if (cursor.moveToFirst()) {
+            do {
+                Product product = new Product();
+                product.setId(cursor.getString(0));
+                product.setParent_id(cursor.getString(1));
+                product.setName(cursor.getString(2));
+                byte[] imageByte = cursor.getBlob(3);
+                product.setBitmap(imageByte);
+
+                //them vao list
+                productList.add(product);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return productList;
+    }
+
     public List<ProductDetail> getAllProductsDetail() {
         Log.i(TAG, "DatabaseHelper.getAllProductsDetail...");
 
