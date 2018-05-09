@@ -196,19 +196,12 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         />
-                </LinearLayout>
+                </Line arLayout>
 
             </LinearLayout>
             <include
                 layout="@layout/layout_comment"
                 />
         </LinearLayout>
-
-
-
-
-
-
-
 </LinearLayout>
 
