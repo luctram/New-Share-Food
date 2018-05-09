@@ -56,7 +56,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void SetControl() {
         btnGoogle=findViewById(R.id.btnGoogle);
-
         edtEmail=findViewById(R.id.edtEmail);
         edtPass=findViewById(R.id.edtPass);
         btnLogin=findViewById(R.id.btnClick);
