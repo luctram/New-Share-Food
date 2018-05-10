@@ -81,7 +81,7 @@ public class ProductDetailInteractor {
             db.addProduct(product, bitmap);
             db.addProductDetail(pDetail);
         } catch (SQLiteException ex) {
-            listener.onLikeFailure("Failed to add product. " + ex.getMessage());
+            listener.onSaveFailure("Failed to add product. " + ex.getMessage());
         }
     }
 
@@ -90,7 +90,7 @@ public class ProductDetailInteractor {
         db.deleteProductDetail(id);
     }
 
-    public void addLike(final String id) {
+    public void setView(final String id, final int i) {
         myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -98,60 +98,27 @@ public class ProductDetailInteractor {
                 for (DataSnapshot item : iterable) {
                     final ProductDetail pdetail = item.getValue(ProductDetail.class);
                     if (pdetail.getId().equals(id)) {
-                        pdetail.addLike(1);
+                        pdetail.setView(i);
                         item.getRef().setValue(pdetail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                listener.onLikeSuccess(pdetail.getLike());
+                                listener.onSaveSuccess(pdetail.getLike());
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                listener.onLikeFailure("Failed to set product detail.");
+                                listener.onSaveFailure("Failed to set product detail.");
                             }
                         });
                         return;
                     }
                 }
-                listener.onLikeFailure("Failed to find product detail.");
+                listener.onSaveFailure("Failed to find product detail.");
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                listener.onLikeFailure("Failed to read product detail. " + databaseError.toException());
-            }
-        });
-    }
-
-    public void removeLike(final String id) {
-        myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
-                for (DataSnapshot item : iterable) {
-                    final ProductDetail pdetail = item.getValue(ProductDetail.class);
-                    if (pdetail.getId().equals(id)) {
-                        pdetail.removeLike(1);
-                        item.getRef().setValue(pdetail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                listener.onLikeSuccess(pdetail.getLike());
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                listener.onLikeFailure("Failed to set product detail.");
-                            }
-                        });
-                        return;
-                    }
-                }
-                listener.onLikeFailure("Failed to find product detail.");
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                listener.onLikeFailure("Failed to read product detail. " + databaseError.toException());
+                listener.onSaveFailure("Failed to read product detail. " + databaseError.toException());
             }
         });
     }

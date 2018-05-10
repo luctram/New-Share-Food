@@ -12,19 +12,27 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <ProgressBar
-        android:id="@+id/progressBarProductDetail"
-        style="?android:attr/progressBarStyle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageViewdetail"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/item340_03" />
+        <ImageView
+            android:id="@+id/imageViewdetail"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/item340_03" />
+
+        <ProgressBar
+            android:id="@+id/progressBarProductDetail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textViewTenmondetail"
@@ -60,12 +68,12 @@
             android:text="26 bình luận" />
 
         <CheckBox
+            android:id="@+id/checkboxLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:background="#fff"
-            android:button="@drawable/checkboxlike_custom"
-            android:id="@+id/checkboxLike"/>
+            android:button="@drawable/checkboxsave_custom" />
 
         <TextView
             android:id="@+id/textViewLike"

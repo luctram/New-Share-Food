@@ -13,7 +13,7 @@ public interface ProductDetailView {
 
     public void displayProductDetail(ProductDetail productDetail, Bitmap bitmap);
 
-    public void setLike(int i);
+    public void setView(int i);
 
-    public void setCheckedLike(boolean b);
+    public void setCheckedSave(boolean b);
 }

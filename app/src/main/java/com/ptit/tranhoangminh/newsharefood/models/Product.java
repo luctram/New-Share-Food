@@ -14,7 +14,6 @@ public class Product implements Serializable {
     private String parent_id;
     private String name;
     private String image;
-    private byte[] bitmap;
 
     public Product() {
     }
@@ -30,13 +29,6 @@ public class Product implements Serializable {
         this.parent_id = parent_id;
         this.name = name;
         this.image = image;
-    }
-    public Product(String id, String parent_id, String name, String image, byte[] bitmap) {
-        this.id = id;
-        this.parent_id = parent_id;
-        this.name = name;
-        this.image = image;
-        this.bitmap = bitmap;
     }
 
     public String getId() {
@@ -69,17 +61,5 @@ public class Product implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public byte[] getBitmap() {
-        return bitmap;
-    }
-
-    public void setBitmap(byte[] bitmap) {
-        this.bitmap = bitmap;
-    }
-
-    public Bitmap getByteasBitmap() {
-        return BitmapFactory.decodeByteArray(bitmap, 0, bitmap.length);
     }
 }

@@ -89,9 +89,9 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    productDetailPresenter.liked(productKey, pDetail, ((BitmapDrawable)imgHinhmon.getDrawable()).getBitmap());
+                    productDetailPresenter.saved(productKey, pDetail, ((BitmapDrawable)imgHinhmon.getDrawable()).getBitmap());
                 } else {
-                    productDetailPresenter.unLike(productKey.getId());
+                    productDetailPresenter.unSave(productKey.getId());
                 }
             }
         });
@@ -176,12 +176,12 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     @Override
-    public void setLike(int i) {
+    public void setView(int i) {
         tvLike.setText(String.valueOf(i) + " yêu thích");
     }
 
     @Override
-    public void setCheckedLike(boolean b) {
+    public void setCheckedSave(boolean b) {
         cbLike.setChecked(b);
     }
 }

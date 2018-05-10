@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SeachViewActivity;
 import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductActivity;
+import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.ProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
@@ -86,7 +87,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent detailProductIntent = new Intent(ProductActivity.this, ProductDetailActivity.class);
+                Intent detailProductIntent = new Intent(ProductActivity.this, NewProductDetailActivity.class);
                 detailProductIntent.putExtra("objectKey", productArrayList.get(i));
                 startActivity(detailProductIntent);
             }
@@ -119,7 +120,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 bundle.putString("cate_name", cate_name);
                 bundle.putInt("mode", ADD_MODE);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent,1111);
                 break;
             case R.id.search:
                 intent = new Intent(ProductActivity.this, SeachViewActivity.class);
@@ -151,7 +152,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 bundle.putSerializable("product", pd);
                 bundle.putInt("mode", EDIT_MODE);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, 1111);
                 break;
             case R.id.menuXoa:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ProductActivity.this);
@@ -162,11 +163,11 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         productPresenter.destroyProductOnFirebase(pd.getId(), pd.getImage());
+                        productPresenter.loadProducts(cate_id);
                     }
                 }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 alertDialog.show();
@@ -174,6 +175,14 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1111) {
+            productPresenter.loadProducts(cate_id);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
