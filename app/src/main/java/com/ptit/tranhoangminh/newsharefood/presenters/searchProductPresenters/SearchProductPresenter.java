@@ -22,9 +22,9 @@ public class SearchProductPresenter implements LoadSearchProductListener {
         this.searchProductInteractor = new SearchProductInteractor(this, context);
     }
 
-    public void loadAllSearchProducts(String cate_id,String name) {
+    public void loadAllSearchProducts(String name) {
         searchProductView.showProgress();
-        searchProductInteractor.createSearchProductList(cate_id,name);
+        searchProductInteractor.createSearchProductList(name);
     }
     @Override
     public void onLoadSearchProductsSuccess(List<Product> productArrayList) {
