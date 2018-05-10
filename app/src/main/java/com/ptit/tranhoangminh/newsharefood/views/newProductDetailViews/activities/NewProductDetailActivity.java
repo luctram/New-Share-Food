@@ -26,7 +26,6 @@ import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.MaterialFragment;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.RecipeFragment;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.VideoFragment;
-import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.ProductDetailView;
 
 import java.util.ArrayList;
 import java.util.List;
