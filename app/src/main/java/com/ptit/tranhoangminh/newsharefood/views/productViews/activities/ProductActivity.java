@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SeachViewActivity;
 import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductActivity;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
-import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.ProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.presenters.productPresenters.ProductPresenter;

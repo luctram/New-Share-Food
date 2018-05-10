@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".views.categoryViews.activities.CategoryActivity" />
-        <activity android:name=".views.productDetailViews.activities.ProductDetailActivity" />
         <activity android:name=".views.productViews.activities.ProductActivity" />
         <activity android:name=".Splashscreen">
             <intent-filter>

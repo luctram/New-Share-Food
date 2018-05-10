@@ -17,7 +17,7 @@ import com.ptit.tranhoangminh.newsharefood.adapters.ProductAdapter;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 
 import com.ptit.tranhoangminh.newsharefood.presenters.searchProductPresenters.SearchProductPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.ProductDetailActivity;
+import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.views.productViews.activities.ProductActivity;
 
 
@@ -70,7 +70,7 @@ public class SeachViewActivity extends AppCompatActivity implements SearchViewIm
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent detailProductIntent = new Intent(SeachViewActivity.this, ProductDetailActivity.class);
+                    Intent detailProductIntent = new Intent(SeachViewActivity.this, NewProductDetailActivity.class);
                     detailProductIntent.putExtra("objectKey", productArrayList.get(i));
                     startActivity(detailProductIntent);
                 }
