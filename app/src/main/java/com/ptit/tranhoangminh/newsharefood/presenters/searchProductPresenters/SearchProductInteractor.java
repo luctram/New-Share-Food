@@ -30,7 +30,7 @@ public class SearchProductInteractor {
         db = new DatabaseHelper(context);
     }
 
-    public void createSearchProductList(final String cate_id,final String name) {
+    public void createSearchProductList(final String name) {
         final ArrayList<Product> productList = new ArrayList<>();
         myRef.child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -39,7 +39,7 @@ public class SearchProductInteractor {
                 Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
                 for (DataSnapshot item : iterable) {
                     Product pd = item.getValue(Product.class);
-                    if(pd.getName().toLowerCase().startsWith(name.toLowerCase()) && pd.getParent_id().equals(cate_id)) {
+                    if(pd.getName().toLowerCase().startsWith(name.toLowerCase())) {
                         productList.add(pd);
                     }
                 }

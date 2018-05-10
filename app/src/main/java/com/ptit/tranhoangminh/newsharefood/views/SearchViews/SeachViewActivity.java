@@ -54,7 +54,7 @@ public class SeachViewActivity extends AppCompatActivity implements SearchViewIm
             @Override
             public boolean onQueryTextChange(String newText) {
                 if(newText != null) {
-                    searchProductPresenter.loadAllSearchProducts(cate_id, newText);
+                    searchProductPresenter.loadAllSearchProducts( newText);
                 }
 
                 return true;
