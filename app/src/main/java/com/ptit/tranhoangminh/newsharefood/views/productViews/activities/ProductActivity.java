@@ -20,6 +20,7 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SeachViewActivity;
 import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductActivity;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.ProductDetailActivity;
@@ -121,6 +122,12 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 intent.putExtras(bundle);
                 startActivityForResult(intent,1111);
                 break;
+            case R.id.search:
+                intent = new Intent(ProductActivity.this, SeachViewActivity.class);
+                bundle = new Bundle();
+                bundle.putString("cate_id", cate_id);
+                intent.putExtras(bundle);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -165,6 +172,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 });
                 alertDialog.show();
                 break;
+                
         }
         return super.onContextItemSelected(item);
     }
