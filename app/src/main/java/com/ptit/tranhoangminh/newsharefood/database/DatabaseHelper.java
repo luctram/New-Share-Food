@@ -218,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //duyet tren con tro va them vao list
         if (cursor.moveToFirst()) {
             do {
-                Product product = new Product();
+                ProductSQLite product = new ProductSQLite();
                 product.setId(cursor.getString(0));
                 product.setParent_id(cursor.getString(1));
                 product.setName(cursor.getString(2));
