@@ -29,9 +29,10 @@
         <activity android:name=".views.savedProductViews.activities.SavedProductActivity" />
         <activity android:name=".views.savedProductDetailViews.activities.SavedProductDetailActivity" />
         <activity android:name=".views.StoreDetail.ChiTietQuanAnActivity" />
-        <activity android:name=".views.HomePageRes.HomePageResActivity">
+        <activity android:name=".views.HomePageRes.HomePageResActivity" />
+        <activity android:name=".views.SearchViews.SeachViewActivity" />
 
-        </activity>
+
     </application>
 
 </manifest>

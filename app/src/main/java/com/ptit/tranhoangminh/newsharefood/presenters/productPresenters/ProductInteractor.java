@@ -34,7 +34,7 @@ public class ProductInteractor {
         myRef.child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //productList.clear();
+//                productList.clear();
                 Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
                 for (DataSnapshot item : iterable) {
                     Product pd = item.getValue(Product.class);
