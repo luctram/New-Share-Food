@@ -78,7 +78,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
 
         @SuppressLint("MissingPermission")
         Location vitriHienTai = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-        Log.d("vt", vitriHienTai.getLatitude() + "");
+        //Log.d("vt", vitriHienTai.getLatitude() + "");
         if (vitriHienTai != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("latitude", String.valueOf(vitriHienTai.getLatitude()));

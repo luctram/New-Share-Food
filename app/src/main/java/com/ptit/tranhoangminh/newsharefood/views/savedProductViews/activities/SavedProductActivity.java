@@ -126,7 +126,7 @@ public class SavedProductActivity extends AppCompatActivity implements SavedProd
                 }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        savedProductPresenter.destroyProductOnSQLite(pd.getId());
+
                     }
                 });
                 alertDialog.show();

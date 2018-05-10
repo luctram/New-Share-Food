@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductActivity;
+import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.views.productDetailViews.activities.ProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
@@ -85,7 +86,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent detailProductIntent = new Intent(ProductActivity.this, ProductDetailActivity.class);
+                Intent detailProductIntent = new Intent(ProductActivity.this, NewProductDetailActivity.class);
                 detailProductIntent.putExtra("objectKey", productArrayList.get(i));
                 startActivity(detailProductIntent);
             }

@@ -20,7 +20,7 @@ public class ProductDetailPresenter implements LoadProductDetailListener {
     public void loadProductDetail(String id, String image_id) {
         productDetailView.showProgress();
         productDetailInteractor.createProductDetail(id, image_id);
-        productDetailView.setCheckedLike(productDetailInteractor.isExistItemSQlite(id));
+        productDetailView.setCheckedSave(productDetailInteractor.isExistItemSQlite(id));
     }
 
     @Override
@@ -35,24 +35,23 @@ public class ProductDetailPresenter implements LoadProductDetailListener {
         productDetailView.hideProgress();
     }
 
-    public void liked(Product product, ProductDetail pDetail, Bitmap bitmap) {
+    public void saved(Product product, ProductDetail pDetail, Bitmap bitmap) {
         productDetailInteractor.addProductSqlite(product, pDetail, bitmap);
-        productDetailInteractor.addLike(product.getId());
+        productDetailInteractor.setView(product.getId(),1);
     }
 
-    public void unLike(String id) {
+    public void unSave(String id) {
         productDetailInteractor.removeProductSqlite(id);
-        productDetailInteractor.removeLike(id);
+        productDetailInteractor.setView(id,-1);
     }
 
     @Override
-    public void onLikeSuccess(int i) {
-        productDetailView.setLike(i);
+    public void onSaveSuccess(int i) {
+        productDetailView.setView(i);
     }
 
     @Override
-    public void onLikeFailure(String message) {
+    public void onSaveFailure(String message) {
         productDetailView.displayMessage(message);
     }
-
 }

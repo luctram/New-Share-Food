@@ -9,7 +9,7 @@ public interface LoadProductDetailListener {
 
     void onLoadProductDetailFailure(String message);
 
-    void onLikeSuccess(int i);
+    void onSaveSuccess(int i);
 
-    void onLikeFailure(String message);
+    void onSaveFailure(String message);
 }

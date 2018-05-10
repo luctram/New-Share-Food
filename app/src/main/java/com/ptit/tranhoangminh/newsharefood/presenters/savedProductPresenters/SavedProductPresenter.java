@@ -36,5 +36,7 @@ public class SavedProductPresenter implements LoadSavedProductListener {
 
     public void destroyProductOnSQLite(String id) {
         savedProductInteractor.destroySavedProduct(id);
+
+        loadAllSavedProducts();
     }
 }
