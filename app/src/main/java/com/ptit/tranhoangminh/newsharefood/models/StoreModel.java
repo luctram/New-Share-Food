@@ -50,6 +50,14 @@ public class StoreModel implements Parcelable {
         in.readTypedList(commentModelList,CommentModel.CREATOR);
     }
 
+    public String getTenquanan() {
+        return tenquanan;
+    }
+
+    public void setTenquanan(String tenquanan) {
+        this.tenquanan = tenquanan;
+    }
+
     public static final Creator<StoreModel> CREATOR = new Creator<StoreModel>() {
         @Override
         public StoreModel createFromParcel(Parcel in) {

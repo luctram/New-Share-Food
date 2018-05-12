@@ -20,6 +20,8 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SeachViewActivity;
 import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductActivity;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
@@ -27,6 +29,7 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.presenters.productPresenters.ProductPresenter;
 import com.ptit.tranhoangminh.newsharefood.adapters.ProductAdapter;
+import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
 
 import java.util.ArrayList;
 
@@ -46,6 +49,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
     ProductAdapter myAdapter;
     public final static int ADD_MODE = 0;
     public final static int EDIT_MODE = 1;
+    FirebaseUser user;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -76,6 +80,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
         toolbar = findViewById(R.id.toolbarLoaiMonAn);
         btnBepchien = findViewById(R.id.buttonBepchien);
         pgbProduct = findViewById(R.id.progressBarProduct);
+        user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     private void initPresenter() {
@@ -113,19 +118,27 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 super.onBackPressed();
                 break;
             case R.id.menuThemmon:
-                Intent intent = new Intent(ProductActivity.this, AddEditProductActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("cate_id", cate_id);
-                bundle.putString("cate_name", cate_name);
-                bundle.putInt("mode", ADD_MODE);
-                intent.putExtras(bundle);
-                startActivityForResult(intent,1111);
+                if (user!=null) {
+                    Intent intent = new Intent(ProductActivity.this, AddEditProductActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("cate_id", cate_id);
+                    bundle.putString("cate_name", cate_name);
+                    bundle.putInt("mode", ADD_MODE);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, 1111);
+                }
+                else {
+                    //show log in activity
+                }
                 break;
             case R.id.search:
-                intent = new Intent(ProductActivity.this, SeachViewActivity.class);
-                bundle = new Bundle();
+                Intent intent = new Intent(ProductActivity.this, SeachViewActivity.class);
+                Bundle bundle = new Bundle();
                 bundle.putString("cate_id", cate_id);
                 intent.putExtras(bundle);
+                startActivity(intent);
+            case R.id.menuDaluu:
+                intent = new Intent(ProductActivity.this, SavedProductActivity.class);
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

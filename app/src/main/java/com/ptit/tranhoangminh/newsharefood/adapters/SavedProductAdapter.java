@@ -13,9 +13,7 @@ import android.widget.TextView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.ptit.tranhoangminh.newsharefood.R;
-import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
-import com.ptit.tranhoangminh.newsharefood.reference.FirebaseReference;
 
 import java.util.List;
 
@@ -23,13 +21,13 @@ import java.util.List;
  * Created by Dell on 3/12/2018.
  */
 
-public class SavedProductAdapter extends ArrayAdapter<ProductSQLite> {
+public class savedProductAdapter extends ArrayAdapter<ProductSQLite> {
     Context context;
     int resource;
     List<ProductSQLite> objects;
     StorageReference mStorageRef;
 
-    public SavedProductAdapter(@NonNull Context context, int resource, @NonNull List<ProductSQLite> objects) {
+    public savedProductAdapter(@NonNull Context context, int resource, @NonNull List<ProductSQLite> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;

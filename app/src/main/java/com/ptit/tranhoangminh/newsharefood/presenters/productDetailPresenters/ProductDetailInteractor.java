@@ -17,6 +17,7 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.ptit.tranhoangminh.newsharefood.database.DatabaseHelper;
+import com.ptit.tranhoangminh.newsharefood.models.MemberModel;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 
@@ -36,7 +37,7 @@ public class ProductDetailInteractor {
         db = new DatabaseHelper(context);
     }
 
-    public void createProductDetail(final String id, final String image_id) {
+    public void loadProductDetail(final String id) {
         myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -44,36 +45,85 @@ public class ProductDetailInteractor {
                 for (DataSnapshot item : iterable) {
                     final ProductDetail pdetail = item.getValue(ProductDetail.class);
                     if (pdetail.getId().equals(id)) {
-                        try {
-                            final File localFile = File.createTempFile(image_id, ".png");
-                            mStorageRef.child("Products").child(image_id).getFile(localFile)
-                                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                            final Bitmap[] bitmap = new Bitmap[1];
-                                            bitmap[0] = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                                            listener.onLoadProductDetailSuccess(pdetail, bitmap[0]);
-                                        }
-                                    }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception exception) {
-                                    listener.onLoadProductDetailFailure("Failed to read image. " + exception.getMessage());
-                                }
-                            });
-                            return;
-                        } catch (IOException e) {
-                            listener.onLoadProductDetailFailure("Failed to create temp file. " + e.getMessage());
-                        }
+                        listener.onLoadProductDetailSuccess(pdetail);
+                        return;
                     }
                 }
-                listener.onLoadProductDetailFailure("Failed to find product detail.");
+                listener.onLoadProgressedFailure("Failed to find product detail.");
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                listener.onLoadProductDetailFailure("Failed to read product detail. " + databaseError.toException());
+                listener.onLoadProgressedFailure("Failed to read product detail. " + databaseError.toException());
             }
         });
+    }
+
+    public void loadImageProductDetail(String image_id) {
+        try {
+            final File localFile = File.createTempFile(image_id, ".png");
+            mStorageRef.child("Products").child(image_id).getFile(localFile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            final Bitmap[] bitmap = new Bitmap[1];
+                            bitmap[0] = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            listener.onLoadImageProductDetailSuccess(bitmap[0]);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    listener.onLoadUnProgressFailure("Failed to read image. " + exception.getMessage());
+                }
+            });
+            return;
+        } catch (IOException e) {
+            listener.onLoadUnProgressFailure("Failed to create temp file. " + e.getMessage());
+        }
+    }
+
+    public void loadOwnerDetail(final String owner_id) {
+        myRef.child("members").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
+                for (DataSnapshot item : iterable) {
+                    if (item.getKey().equals(owner_id)) {
+                        final MemberModel member = item.getValue(MemberModel.class);
+                        listener.onLoadOwnerDetailSuccess(member);
+                    }
+                }
+                listener.onLoadUnProgressFailure("Failed to find owner.");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onLoadUnProgressFailure("Failed to read member. " + databaseError.toException());
+            }
+        });
+    }
+
+    public void loadImageOwner(String ownerImage_id) {
+        try {
+            final File localFile = File.createTempFile(ownerImage_id, ".png");
+            mStorageRef.child("thanhvien").child(ownerImage_id).getFile(localFile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            final Bitmap[] bitmap = new Bitmap[1];
+                            bitmap[0] = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            listener.onLoadImageOwnerSuccess(bitmap[0]);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    listener.onLoadUnProgressFailure("Failed to read member image. " + exception.getMessage());
+                }
+            });
+            return;
+        } catch (IOException e) {
+            listener.onLoadUnProgressFailure("Failed to create temp file. " + e.getMessage());
+        }
     }
 
     public void addProductSqlite(Product product, ProductDetail pDetail, Bitmap bitmap) {
@@ -81,7 +131,7 @@ public class ProductDetailInteractor {
             db.addProduct(product, bitmap);
             db.addProductDetail(pDetail);
         } catch (SQLiteException ex) {
-            listener.onSaveFailure("Failed to add product. " + ex.getMessage());
+            listener.onLoadUnProgressFailure("Failed to add product. " + ex.getMessage());
         }
     }
 
@@ -107,24 +157,24 @@ public class ProductDetailInteractor {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                listener.onSaveFailure("Failed to set product detail.");
+                                listener.onLoadUnProgressFailure("Failed to set product detail.");
                             }
                         });
                         return;
                     }
                 }
-                listener.onSaveFailure("Failed to find product detail.");
+                listener.onLoadUnProgressFailure("Failed to find product detail.");
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                listener.onSaveFailure("Failed to read product detail. " + databaseError.toException());
+                listener.onLoadUnProgressFailure("Failed to read product detail. " + databaseError.toException());
             }
         });
     }
 
     public boolean isExistItemSQlite(String id) {
-        if (db.getProduct(id)!=null) {
+        if (db.getProduct(id) != null) {
             return true;
         }
         return false;

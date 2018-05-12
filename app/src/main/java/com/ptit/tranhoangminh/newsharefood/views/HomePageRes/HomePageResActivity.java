@@ -23,13 +23,14 @@ import java.util.List;
  * Created by Dell on 5/5/2018.
  */
 
-public class HomePageResActivity extends AppCompatActivity implements StoreImp{
+public class HomePageResActivity extends AppCompatActivity implements StoreImp {
     StoreModel storeModel;
     RecyclerView recyclerView;
     AdapterRecycleViewStore adapterRecycleViewStore;
-    List<StoreModel>list;
+    List<StoreModel> list;
     ProgressBar progressBar;
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +39,21 @@ public class HomePageResActivity extends AppCompatActivity implements StoreImp{
 
 
         //get location
-        sharedPreferences=getSharedPreferences("toado",MODE_PRIVATE);
-        Log.d("vt",sharedPreferences.getString("latitude",""));
-        Location current_location=new Location("");
-        current_location.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude","0")));
-        current_location.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude","0")));
+        sharedPreferences = getSharedPreferences("toado", MODE_PRIVATE);
+        Log.d("vt", sharedPreferences.getString("latitude", ""));
+        Location current_location = new Location("");
+        current_location.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude", "0")));
+        current_location.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude", "0")));
 
         //thuc thi get quan an
-        DisplayStorePresenterLogic d=new DisplayStorePresenterLogic(HomePageResActivity.this);
+        DisplayStorePresenterLogic d = new DisplayStorePresenterLogic(HomePageResActivity.this);
         d.DisplayListStore(current_location);
     }
 
     private void AddControl() {
-        recyclerView=findViewById(R.id.recycleViewStore);
-        progressBar=findViewById(R.id.progress);
-        list=new ArrayList<>();
+        recyclerView = findViewById(R.id.recycleViewStore);
+        progressBar = findViewById(R.id.progress);
+        list = new ArrayList<>();
     }
 
     @Override
@@ -63,11 +64,11 @@ public class HomePageResActivity extends AppCompatActivity implements StoreImp{
 
     @Override
     public void GetStore(StoreModel storeModel) {
-       Log.d("kiemtra",storeModel.getTenquan());
-         list.add(storeModel);
-         Log.d("size",list.size()+"");
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(HomePageResActivity.this);
-        adapterRecycleViewStore=new AdapterRecycleViewStore(list,R.layout.custom_res_layout,HomePageResActivity.this);
+//       Log.d("kiemtra",storeModel.getTenquan());
+        list.add(storeModel);
+        Log.d("size", list.size() + "");
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HomePageResActivity.this);
+        adapterRecycleViewStore = new AdapterRecycleViewStore(list, R.layout.custom_res_layout, HomePageResActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapterRecycleViewStore);
         adapterRecycleViewStore.notifyDataSetChanged();

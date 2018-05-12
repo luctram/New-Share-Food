@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +27,7 @@ import java.io.IOException;
 public class AddEditProductInteractor {
     private DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
     private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private LoadAddEditProductListener listener;
 
     public AddEditProductInteractor(LoadAddEditProductListener listener) {
@@ -75,6 +78,9 @@ public class AddEditProductInteractor {
         DatabaseReference productRef = myRef.child("Products").push();
         final String id = productRef.getKey();
         product.setId(id);
+        if (user != null) {
+            product.setMember_id(user.getUid());
+        }
         productRef.setValue(product).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

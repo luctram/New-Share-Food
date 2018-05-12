@@ -20,7 +20,6 @@ import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.ptit.tranhoangminh.newsharefood.views.categoryViews.activities.CategoryActivity;
 
 /**
  * Created by Dell on 3/12/2018.
@@ -38,7 +37,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splashscreen);
+        setContentView(R.layout.splashscreen_layout);
         AnhXa();
         //tạo 1 api yeu cau truy cap location service
         googleApiClient = new GoogleApiClient.Builder(this)
@@ -50,7 +49,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         //xin quyen .kiem tra xem nguoi dung da cap quyen chua.chua thi hien thi bang deny or allow
         int checkPermissionCoarseLocaltion = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
         int checkPermissionFineLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-        if (checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED && checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED) {
+        if (checkPermissionCoarseLocaltion != PackageManager.PERMISSION_GRANTED && checkPermissionFineLocation != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_LOCATION);
         } else {
             googleApiClient.connect();
@@ -120,7 +119,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         btnVaobep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iDangNhap = new Intent(Splashscreen.this, CategoryActivity.class);
+                Intent iDangNhap = new Intent(Splashscreen.this, LoginActivity.class);
                 startActivity(iDangNhap);
                 finish();
             }
