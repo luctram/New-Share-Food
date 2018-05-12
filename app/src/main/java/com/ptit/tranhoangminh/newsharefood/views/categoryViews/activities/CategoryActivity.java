@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,7 +17,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.ptit.tranhoangminh.newsharefood.ContactActivity;
 import com.ptit.tranhoangminh.newsharefood.R;
+import com.ptit.tranhoangminh.newsharefood.UserActivity;
 import com.ptit.tranhoangminh.newsharefood.models.Category;
 import com.ptit.tranhoangminh.newsharefood.presenters.categoryPresenters.CategoryPresenter;
 import com.ptit.tranhoangminh.newsharefood.adapters.CategoryAdapter;
@@ -37,6 +41,29 @@ public class CategoryActivity extends AppCompatActivity implements CategoryView 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_layout);
+        NavigationView nav_view = (NavigationView) findViewById(R.id.navView);
+
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if(id == R.id.userinformation) {
+                    Intent intent = new Intent(CategoryActivity.this, UserActivity.class);
+                    startActivity(intent);
+                }
+                else if(id == R.id.contact) {
+                    Intent intent = new Intent(CategoryActivity.this, ContactActivity.class);
+                    startActivity(intent);
+                }
+                else if(id == R.id.logout) {
+                    Toast.makeText(CategoryActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                }
+
+                return true;
+            }
+        });
+
         setControl();
         initPresenter();
         categoryPresenter.loadCategories();

@@ -31,6 +31,9 @@
         <activity android:name=".views.HomePageRes.HomePageResActivity" />
         <activity android:name=".views.newProductDetailViews.activities.NewProductDetailActivity" />
         <activity android:name=".views.SearchViews.SeachViewActivity" />
+        <activity android:name=".UserActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ContactActivity"></activity>
     </application>
 
 </manifest>

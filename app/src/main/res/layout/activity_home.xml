@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ece6e6"
+    tools:context=".HomeActivity">
+    
+    <EditText
+        android:id="@+id/edtfind"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/khung_dangnhap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:hint="Find"
+        android:drawableRight="@drawable/ic_search_black_24dp"
+        android:drawablePadding="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
+        android:inputType="text"
+        />
+
+    <FrameLayout
+        android:id="@+id/frameContent"
+        android:layout_width="296dp"
+        android:layout_height="345dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        >
+
+    </FrameLayout>
+
+    <Button
+        android:onClick="AddFragment"
+        android:id="@+id/btnhome1"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_alignLeft="@+id/edtfind"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/edtfind"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/bgbutton"
+        android:drawableLeft="@drawable/home30"
+        android:paddingLeft="18dp" />
+
+    <Button
+        android:onClick="AddFragment"
+        android:id="@+id/btnhome2"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnhome1"
+        android:layout_marginStart="120dp"
+        android:background="@drawable/bgbutton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="120dp"
+        android:drawableLeft="@drawable/restaurant30"
+        android:paddingLeft="18dp"
+        />
+
+    <Button
+        android:onClick="AddFragment"
+        android:id="@+id/btnhome3"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnhome1"
+        android:layout_marginEnd="122dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="122dp"
+        android:background="@drawable/bgbutton"
+        android:drawableLeft="@drawable/chef30"
+        android:paddingLeft="18dp"
+        />
+
+    <Button
+        android:onClick="AddFragment"
+        android:id="@+id/btnhome4"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnhome1"
+        android:layout_marginEnd="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="45dp"
+        android:background="@drawable/bgbutton"
+        android:drawableLeft="@drawable/user30"
+        android:paddingLeft="18dp"
+        />
+
+
+</RelativeLayout>

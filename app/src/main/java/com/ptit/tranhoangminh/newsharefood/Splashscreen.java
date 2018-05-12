@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +32,9 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
     public static final int REQUEST_PERMISSION_LOCATION = 1;
     SharedPreferences sharedPreferences;
 
+    FloatingActionButton fab, fab2, fab3;
+    Boolean isOpen = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,34 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         } else {
             googleApiClient.connect();
         }
+
+        //float action button
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isOpen) {
+                    fab2.hide();
+                    fab3.hide();
+                    fab2.setClickable(false);
+                    fab3.setClickable(false);
+                    isOpen = false;
+                }else {
+                    fab2.show();
+                    fab3.show();
+                    fab2.setClickable(true);
+                    fab3.setClickable(true);
+                    isOpen = true;
+                }
+            }
+        });
+
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Splashscreen.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //kiem tra vs request code tren.neu allow thi connect
@@ -108,5 +139,10 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         btnVaobep = findViewById(R.id.btnVaobep);
         btnDangNhap = findViewById(R.id.btnDangnhap);
         sharedPreferences = getSharedPreferences("toado", MODE_PRIVATE);
+
+        // float action button
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
     }
 }
