@@ -27,6 +27,7 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.presenters.productPresenters.ProductPresenter;
 import com.ptit.tranhoangminh.newsharefood.adapters.ProductAdapter;
+import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
 
 import java.util.ArrayList;
 
@@ -126,6 +127,9 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 bundle = new Bundle();
                 bundle.putString("cate_id", cate_id);
                 intent.putExtras(bundle);
+                startActivity(intent);
+            case R.id.menuDaluu:
+                intent = new Intent(ProductActivity.this, SavedProductActivity.class);
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

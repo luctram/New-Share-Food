@@ -2,6 +2,7 @@ package com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activiti
 
 import android.graphics.Bitmap;
 
+import com.ptit.tranhoangminh.newsharefood.models.MemberModel;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 
 public interface ProductDetailView {
@@ -11,7 +12,13 @@ public interface ProductDetailView {
 
     public void displayMessage(String message);
 
-    public void displayProductDetail(ProductDetail productDetail, Bitmap bitmap);
+    public void displayProductDetail(ProductDetail productDetail);
+
+    public void displayImageProductDetail(Bitmap bitmap);
+
+    public void displayOwnerProductDetail(MemberModel memberModel);
+
+    public void displayImageOwner(Bitmap bitmap);
 
     public void setView(int i);
 

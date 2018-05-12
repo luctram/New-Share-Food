@@ -5,7 +5,7 @@
     android:background="#fff"
     android:orientation="vertical">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgHinhMonAn"
         android:layout_width="150dp"
         android:layout_height="100dp"

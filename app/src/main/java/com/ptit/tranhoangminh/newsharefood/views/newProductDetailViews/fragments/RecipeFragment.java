@@ -24,15 +24,15 @@ public class RecipeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            String materials = bundle.getString("recipe");
-            tvRecipe.setText(materials);
+            String recipe = bundle.getString("recipe");
+            tvRecipe.setText(recipe);
         }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recipe,null);
+        View view = inflater.inflate(R.layout.fragment_recipe, null);
         tvRecipe = view.findViewById(R.id.textviewNewRecipe);
         return view;
     }
