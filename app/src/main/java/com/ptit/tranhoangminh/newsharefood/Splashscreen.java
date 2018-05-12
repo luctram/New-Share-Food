@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -20,8 +19,6 @@ import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.ptit.tranhoangminh.newsharefood.views.HomePageRes.HomePageResActivity;
-import com.ptit.tranhoangminh.newsharefood.views.categoryViews.activities.CategoryActivity;
 
 /**
  * Created by Dell on 3/12/2018.
@@ -36,7 +33,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splashscreen);
+        setContentView(R.layout.splashscreen_layout);
         AnhXa();
         //tạo 1 api yeu cau truy cap location service
         googleApiClient = new GoogleApiClient.Builder(this)
