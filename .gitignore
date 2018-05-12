@@ -10,3 +10,7 @@
 .externalNativeBuild
 .idea/misc.xml
 .idea/caches/build_file_checksums.ser
+*.ser
+.idea/gradle.xml
+.idea/runConfigurations.xml
+.idea/vcs.xml
