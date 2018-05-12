@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/userinformation" android:title="User Infomation" android:icon="@mipmap/user"/>
+    <item android:id="@+id/contact" android:title="Contact" android:icon="@mipmap/ic_account_box_black_24dp"/>
+    <item android:id="@+id/logout" android:title="Log out" android:icon="@drawable/ic_exit_to_app_black_24dp"/>
+
+
+
+</menu>

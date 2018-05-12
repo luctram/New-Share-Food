@@ -91,11 +91,7 @@ public class ProductDetail {
         this.comment = comment;
     }
 
-    public void addLike(int i) {
+    public void setView(int i) {
         this.like += i;
-    }
-
-    public void removeLike(int i) {
-        this.like -= i;
     }
 }

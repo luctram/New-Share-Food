@@ -22,18 +22,11 @@ import java.util.Calendar;
 
 public class AddEditProductActivity extends Activity implements AddEditProductView {
 
-    EditText edtTenmon;
-    EditText edtLoaimon;
-    EditText edtNguyenlieu;
-    EditText edtCachnau;
+    EditText edtTenmon, edtLoaimon, edtNguyenlieu, edtCachnau;
     ImageView imgThemanh;
-    Button btnChupanh;
-    Button btnChonanh;
-    Button btnOk;
-    Button btnHuy;
+    Button btnChupanh, btnChonanh, btnOk, btnHuy;
     ProgressBar pgbAddEdit;
-    String cate_id;
-    String cate_name;
+    String cate_id, cate_name;
     int mode;
     final int REQUEST_CODE_TAKEPHOTO = 1;
     final int REQUEST_CODE_PICKPHOTO = 2;

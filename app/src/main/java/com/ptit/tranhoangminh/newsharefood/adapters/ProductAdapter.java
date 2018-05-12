@@ -58,12 +58,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         Product pd = objects.get(position);
         holder.txt.setText(pd.getName());
-        if (pd.getBitmap()==null) {
-            FirebaseReference.setImageFromFireBase(mStorageRef.child("Products").child(pd.getImage()), pd.getImage(), ".png", holder.img);
-        }
-        else {
-            holder.img.setImageBitmap(pd.getByteasBitmap());
-        }
+        FirebaseReference.setImageFromFireBase(mStorageRef.child("Products").child(pd.getImage()), pd.getImage(), ".png", holder.img);
         return convertView;
     }
 }

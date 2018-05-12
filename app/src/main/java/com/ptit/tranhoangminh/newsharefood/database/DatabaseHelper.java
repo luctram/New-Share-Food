@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
+import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -80,13 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void createDefaultProductsifNeed() throws Exception {
         int count = this.getProductsCount();
         if (count == 0) {
-            Product pro1 = new Product("1", "0", "Cơm", "item340_03.png");
-            //pro1.setImageBitmap(BitmapFactory.decodeResource(null, R.drawable.item340_03));
-            Product pro2 = new Product("2", "0", "Cháo", "item_03.png");
-            //pro2.setImageBitmap(BitmapFactory.decodeResource(null, R.drawable.item_03));
-            ProductDetail prodetail1 = new ProductDetail("1", 0,0,"materials...1","recipe...1", "", "");
-            ProductDetail prodetail2 = new ProductDetail("1", 0,0,"materials...2","recipe...2", "", "");
-
+            //create mop product
             try {
                 //this.addProduct(pro1);
                 //this.addProduct(pro2);
@@ -146,10 +141,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(TABLE_PRODUCTS, new String[]{KEY_ID, KEY_PID, KEY_NAME, KEY_IMAGE}, KEY_ID + "=?",
                 new String[]{id}, null, null, null, null);
-        Product product = null;
+        ProductSQLite product = null;
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
-            product = new Product();
+            product = new ProductSQLite();
             product.setId(cursor.getString(0));
             product.setParent_id(cursor.getString(1));
             product.setName(cursor.getString(2));
@@ -181,10 +176,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return pDetail;
     }
 
-    public List<Product> getAllProducts() {
+    public List<ProductSQLite> getAllProducts() {
         Log.i(TAG, "DatabaseHelper.getAllProducts...");
 
-        List<Product> productList = new ArrayList<>();
+        List<ProductSQLite> productList = new ArrayList<>();
         //Select all query
         String query = "SELECT * FROM " + TABLE_PRODUCTS;
 
@@ -194,7 +189,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //duyet tren con tro va them vao list
         if (cursor.moveToFirst()) {
             do {
-                Product product = new Product();
+                ProductSQLite product = new ProductSQLite();
+                product.setId(cursor.getString(0));
+                product.setParent_id(cursor.getString(1));
+                product.setName(cursor.getString(2));
+                byte[] imageByte = cursor.getBlob(3);
+                product.setBitmap(imageByte);
+
+                //them vao list
+                productList.add(product);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return productList;
+    }
+
+    public List<Product> searchProducts(String name) {
+        Log.i(TAG, "DatabaseHelper.searchProducts...");
+
+        List<Product> productList = new ArrayList<>();
+        //Select all query
+        String query = "SELECT * FROM " + TABLE_PRODUCTS +" WHERE name LIKE '%"+name+"%'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        //duyet tren con tro va them vao list
+        if (cursor.moveToFirst()) {
+            do {
+                ProductSQLite product = new ProductSQLite();
                 product.setId(cursor.getString(0));
                 product.setParent_id(cursor.getString(1));
                 product.setName(cursor.getString(2));
@@ -263,7 +287,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateProduct(Product product) {
+    public int updateProduct(ProductSQLite product) {
         Log.i(TAG, "DatabaseHeler.updateProduct... " + product.getName());
 
         SQLiteDatabase db = this.getWritableDatabase();
