@@ -13,19 +13,24 @@ import java.util.List;
 public class ParserPolyline {
     public static List<LatLng> getListToaDo(String json)
     {
-        List<LatLng>list=new ArrayList<>();
+        List<LatLng> latLngs = new ArrayList<>();
         try {
-            JSONObject jsonObject=new JSONObject(json);
-            JSONArray routes=jsonObject.getJSONArray("routes");
-            for(int i=0;i<routes.length();i++)
-            {
-                JSONObject overview_polyline=routes.getJSONObject(i);
-                String points=overview_polyline.getString("points");
-                list= PolyUtil.decode(points);
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray routes = jsonObject.getJSONArray("routes");
+            for (int i=0; i<routes.length(); i++){
+                JSONObject jsonObjectArray = routes.getJSONObject(i);
+                JSONObject overviewPolyline = jsonObjectArray.getJSONObject("overview_polyline");
+
+                String point = overviewPolyline.getString("points");
+
+                latLngs = PolyUtil.decode(point);
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return list;
+
+        return latLngs;
+
     }
 }
