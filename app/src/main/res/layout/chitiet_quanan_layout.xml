@@ -199,6 +199,12 @@
 
 
             </LinearLayout>
+            <Button
+                android:id="@+id/btnComment"
+                android:text="Comment"
+                android:layout_gravity="center"
+                android:layout_width="100dp"
+                android:layout_height="50dp" />
 
             <include layout="@layout/tinhnang_store_layout"></include>
             <include layout="@layout/layout_comment"> </include>
@@ -209,4 +215,3 @@
     </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
-
