@@ -11,11 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,7 +35,6 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.adapters.AdapterComment;
 import com.ptit.tranhoangminh.newsharefood.models.StoreModel;
 import com.ptit.tranhoangminh.newsharefood.models.UtilitiesModel;
-import com.ptit.tranhoangminh.newsharefood.views.AddComment.AddCommentActivity;
 import com.ptit.tranhoangminh.newsharefood.views.DirectionMap.DirectionMapStoreActivity;
 
 import java.text.ParseException;
@@ -56,8 +53,6 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     MapFragment mapFragment;
     LinearLayout linearLayoutTienIch;
     View view;
-    Button btnComment;
-    public static int REQUEST_CODE_COMMENT=999;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +63,6 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
 
         mapFragment.getMapAsync(this);
         view.setOnClickListener(this);
-        btnComment.setOnClickListener(this);
     }
 
     private void AddControl() {
@@ -86,7 +80,6 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         linearLayoutTienIch = findViewById(R.id.linerTienIch);
         view = findViewById(R.id.khungchuyenhuongMap);
-        btnComment=findViewById(R.id.btnComment);
     }
 
     @Override
@@ -130,19 +123,16 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
             }
         });
         //load comment
-       setAdapter();
-
-        //scrollview luôn hiển thi trên cùng khi load xong data
-        nestedScrollViewCT.smoothScrollBy(0, 0);
-    }
-    private void setAdapter()
-    {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapterComment = new AdapterComment(this, R.layout.custom_layout_comment, storeModel.getCommentModelList());
         recyclerView.setAdapter(adapterComment);
         adapterComment.notifyDataSetChanged();
+
+        //scrollview luôn hiển thi trên cùng khi load xong data
+        nestedScrollViewCT.smoothScrollBy(0, 0);
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
@@ -194,36 +184,12 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         int id = view.getId();
         switch (id) {
             case R.id.khungchuyenhuongMap:
-                Intent iDirection = new Intent(ChiTietQuanAnActivity.this, DirectionMapStoreActivity.class);
-                iDirection.putExtra("latitute", storeModel.getBranchModelList().get(0).getLatitude());
-                iDirection.putExtra("longtitute", storeModel.getBranchModelList().get(0).getLongitude());
-                Log.d("check",storeModel.getBranchModelList().get(0).getLatitude()+"-"+storeModel.getBranchModelList().get(0).getLongitude());
-                startActivity(iDirection);
-                break;
-                 case R.id.btnComment:
-                Intent iComment=new Intent(ChiTietQuanAnActivity.this, AddCommentActivity.class);
-                iComment.putExtra("key_store",storeModel.getMaquanan());
-                iComment.putExtra("name_store",storeModel.getTenquan());
-                iComment.putExtra("address_store",storeModel.getBranchModelList().get(0).getDiachi());
-                startActivityForResult(iComment,REQUEST_CODE_COMMENT);
-                break;
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQUEST_CODE_COMMENT)
-        {
-            if(resultCode==998)
-            {
-                String result=data.getStringExtra("result");
-                Toast.makeText(this, "Thêm bình luận thành công", Toast.LENGTH_SHORT).show();
-                setAdapter();
-            }
+            Intent iDirection=new Intent(ChiTietQuanAnActivity.this,DirectionMapStoreActivity.class);
+            iDirection.putExtra("latitute",storeModel.getBranchModelList().get(0).getLatitude());
+            iDirection.putExtra("longtitute",storeModel.getBranchModelList().get(0).getLongitude());
+            //Log.d("check",storeModel.getBranchModelList().get(0).getLatitude()+"-"+storeModel.getBranchModelList().get(0).getLongitude());
+            startActivity(iDirection);
+            break;
         }
     }
 }
-
-
-
