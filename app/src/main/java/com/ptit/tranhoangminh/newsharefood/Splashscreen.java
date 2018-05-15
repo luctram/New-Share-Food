@@ -20,6 +20,7 @@ import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.ptit.tranhoangminh.newsharefood.views.CategoryViews.activities.CategoryActivity;
 
 /**
  * Created by Dell on 3/12/2018.
@@ -119,8 +120,24 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         btnVaobep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent iDangNhap = new Intent(Splashscreen.this, CategoryActivity.class);
+                startActivity(iDangNhap);
+                finish();
+            }
+        });
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent iDangNhap = new Intent(Splashscreen.this, LoginActivity.class);
                 startActivity(iDangNhap);
+                finish();
+            }
+        });
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent login = new Intent(Splashscreen.this, LoginActivity.class);
+                startActivity(login);
                 finish();
             }
         });
