@@ -29,7 +29,7 @@ public class StoreModel implements Parcelable {
     List<String> tienich;
     List<String> hinhanh;
     List<BranchModel>branchModelList;
-
+    List<CategoryStoreModel>categoryStoreModelList;
 
     protected StoreModel(Parcel in) {
         giaohang = in.readByte() != 0;
@@ -175,6 +175,14 @@ public class StoreModel implements Parcelable {
 
     public void setBranchModelList(List<BranchModel> branchModelList) {
         this.branchModelList = branchModelList;
+    }
+
+    public List<CategoryStoreModel> getCategoryStoreModelList() {
+        return categoryStoreModelList;
+    }
+
+    public void setCategoryStoreModelList(List<CategoryStoreModel> categoryStoreModelList) {
+        this.categoryStoreModelList = categoryStoreModelList;
     }
 
     public void GetDanhSachQuanAn(final StoreInterface storeInterface, final Location current_location)
