@@ -38,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
         edtSearch = (EditText) findViewById(R.id.edtfind);
         viewPager = (ViewPager) findViewById(R.id.vp);
 
+        btnhome1.performClick();
+
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
