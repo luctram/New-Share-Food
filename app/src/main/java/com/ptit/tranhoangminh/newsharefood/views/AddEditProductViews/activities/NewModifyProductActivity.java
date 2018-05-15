@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -150,8 +151,7 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
                             pdetail.setRecipe(recipe);
                             if (!changedPic) {
                                 addEditProductPresenter.saveOldProduct(pd, pdetail);
-                            }
-                            else {
+                            } else {
                                 addEditProductPresenter.saveOldProduct(pd, pdetail, ((BitmapDrawable) img.getDrawable()).getBitmap());
                             }
                         }
@@ -214,6 +214,7 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
                     changedPic = true;
                     Uri selectedImage = data.getData();
                     img.setImageURI(selectedImage);
+                    Log.d("picture box", selectedImage.getPath());
                 }
                 break;
         }
