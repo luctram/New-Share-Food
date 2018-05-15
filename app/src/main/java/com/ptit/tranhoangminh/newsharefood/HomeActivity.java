@@ -3,7 +3,9 @@ package com.ptit.tranhoangminh.newsharefood;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -11,6 +13,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.views.fragment.Home1Fragment;
 import com.ptit.tranhoangminh.newsharefood.views.fragment.Home2Fragment;
@@ -18,14 +22,20 @@ import com.ptit.tranhoangminh.newsharefood.views.fragment.Home3Fragment;
 import com.ptit.tranhoangminh.newsharefood.views.fragment.Home4Fragment;
 import com.ptit.tranhoangminh.newsharefood.views.fragment.HomeSearchFragment;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity {
 
     Button btnhome1, btnhome2, btnhome3, btnhome4;
+    ImageButton btnvoice;
     EditText edtSearch;
     ViewPager viewPager;
 
     String textSearch = "";
     Boolean mIsEmpty = false;
+
+    final int REQUEST_CODE_VOICE = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         btnhome4 = (Button) findViewById(R.id.btnhome4);
         edtSearch = (EditText) findViewById(R.id.edtfind);
         viewPager = (ViewPager) findViewById(R.id.vp);
+        btnvoice = (ImageButton) findViewById(R.id.btnvoice);
 
         btnhome1.performClick();
 
@@ -65,6 +76,37 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        btnvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Xin Chao!!");
+
+                if(intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, REQUEST_CODE_VOICE);
+                } else {
+                    Toast.makeText(HomeActivity.this, "Thiết bị này không hỗ trợ nhận diện giọng nói", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case REQUEST_CODE_VOICE:
+                if(resultCode == RESULT_OK && data != null){
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    edtSearch.setText(result.get(0));
+                }
+                break;
+        }
     }
 
     public void AddFragment(View view) {
