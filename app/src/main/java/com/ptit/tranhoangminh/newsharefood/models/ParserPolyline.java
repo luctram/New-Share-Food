@@ -1,5 +1,7 @@
 package com.ptit.tranhoangminh.newsharefood.models;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.PolyUtil;
 
@@ -11,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParserPolyline {
-    public static List<LatLng> getListToaDo(String json)
+
+    public List<LatLng> getListToaDo(String json)
     {
         List<LatLng> latLngs = new ArrayList<>();
         try {
@@ -31,6 +34,5 @@ public class ParserPolyline {
         }
 
         return latLngs;
-
     }
 }

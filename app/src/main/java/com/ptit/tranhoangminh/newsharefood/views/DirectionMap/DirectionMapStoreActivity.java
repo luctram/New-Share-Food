@@ -22,6 +22,7 @@ import com.ptit.tranhoangminh.newsharefood.presenters.polylinePresenters.Directi
 
 import java.util.List;
 
+
 public class DirectionMapStoreActivity extends AppCompatActivity implements OnMapReadyCallback,DirectionImp  {
     GoogleMap googleMap;
     MapFragment mapFragment;
@@ -50,9 +51,8 @@ public class DirectionMapStoreActivity extends AppCompatActivity implements OnMa
         current_location.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude", "0")));
         current_location.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude", "0")));
 
-
         link = "https://maps.googleapis.com/maps/api/directions/json?origin=" + current_location.getLatitude() + "," + current_location.getLongitude() + "&destination=" + latitue + "," + longtitute + "&language=vi&key=AIzaSyBIZGjL6zFg5ukQr0ymPhz7ZLpje-cCMkw";
-
+        // link="https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCPMjB01i28rWRigg3l_a_pHLs27WnKGz4";
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
@@ -78,7 +78,8 @@ public class DirectionMapStoreActivity extends AppCompatActivity implements OnMa
         googleMap.moveCamera(cameraUpdate);
 
 
-         directionMapPresenterLogic.getRoadToStore(googleMap,link);
+        directionMapPresenterLogic.getRoadToStore(googleMap, link);
+
     }
 
     @Override
