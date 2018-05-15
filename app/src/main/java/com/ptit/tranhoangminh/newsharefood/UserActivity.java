@@ -24,8 +24,8 @@ public class UserActivity extends AppCompatActivity implements Tab1Fragment.OnFr
         tabLayout.addTab(tabLayout.newTab().setText("Tab2"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -37,14 +37,12 @@ public class UserActivity extends AppCompatActivity implements Tab1Fragment.OnFr
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                if (true) {
 
-                }
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-//cc
+
             }
         });
 

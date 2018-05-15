@@ -19,7 +19,7 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.CommentModel;
 import com.ptit.tranhoangminh.newsharefood.presenters.saveCommentForStorePresenters.SaveCommentStorePresenterLogic;
 
-public class AddCommentActivity extends AppCompatActivity implements View.OnClickListener,AddCommentImp{
+public class AddCommentActivity extends AppCompatActivity implements View.OnClickListener,AddCommentImp {
     TextView txtNameStore, txtAddressStore, txtPost_comment;
     Toolbar toolbar;
     ImageButton image_Comment;
@@ -114,9 +114,8 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
     public void getresult(String s) {
         Toast.makeText(this, "Thêm bình luận thành công..", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent();
-        intent.putExtra("result","Thêm thành công..");
+        intent.putExtra("result","Thêm thành công");
         setResult(REQUEST_CODE_SET_COMMENT,intent);
         finish();
     }
-    //commit lại nha
 }

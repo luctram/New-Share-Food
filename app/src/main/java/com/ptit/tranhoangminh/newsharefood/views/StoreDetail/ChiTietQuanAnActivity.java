@@ -40,7 +40,6 @@ import com.ptit.tranhoangminh.newsharefood.models.CategoryStoreModel;
 import com.ptit.tranhoangminh.newsharefood.models.StoreModel;
 import com.ptit.tranhoangminh.newsharefood.models.UtilitiesModel;
 import com.ptit.tranhoangminh.newsharefood.presenters.menuStorePresenters.MenuStorePresenterLogic;
-import com.ptit.tranhoangminh.newsharefood.views.AddComment.AddCommentActivity;
 import com.ptit.tranhoangminh.newsharefood.views.DirectionMap.DirectionMapStoreActivity;
 import com.ptit.tranhoangminh.newsharefood.views.Orderfood.MyCartActivity;
 
@@ -54,7 +53,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     TextView txtTenQuan, txtDiaChi, txtHinh, txtCheckin, txtThoiGianHD, txtTongBL, txtTongLuu, txtTrangThaiHD;
     ImageView imgHinhQuanAn;
     StoreModel storeModel;
-    RecyclerView recyclerView,recyclerViewMenu;
+    RecyclerView recyclerView, recyclerViewMenu;
     AdapterComment adapterComment;
     AdapterRecycleViewMenuStore adapterRecycleViewMenuStore;
     NestedScrollView nestedScrollViewCT;
@@ -62,7 +61,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     MapFragment mapFragment;
     LinearLayout linearLayoutTienIch;
     View view;
-    Button btnComment,btnAddCart;
+    Button btnComment, btnAddCart;
     MenuStorePresenterLogic menuStorePresenterLogic;
     public static int REQUEST_CODE_COMMENT = 999;
 
@@ -78,7 +77,6 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         view.setOnClickListener(this);
         btnComment.setOnClickListener(this);
         btnAddCart.setOnClickListener(this);
-
     }
 
     private void AddControl() {
@@ -97,7 +95,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         linearLayoutTienIch = findViewById(R.id.linerTienIch);
         view = findViewById(R.id.khungchuyenhuongMap);
         btnComment = findViewById(R.id.btnComment);
-        btnAddCart=findViewById(R.id.btnAddCart);
+        btnAddCart = findViewById(R.id.btnAddCart);
         recyclerViewMenu = findViewById(R.id.recycleviewMenu);
         menuStorePresenterLogic = new MenuStorePresenterLogic(ChiTietQuanAnActivity.this);
     }
@@ -157,8 +155,10 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         adapterComment = new AdapterComment(this, R.layout.custom_layout_comment, storeModel.getCommentModelList());
         recyclerView.setAdapter(adapterComment);
         adapterComment.notifyDataSetChanged();
-        menuStorePresenterLogic.getMenu(storeModel.getMaquanan());
 
+        //scrollview luôn hiển thi trên cùng khi load xong data
+        nestedScrollViewCT.smoothScrollBy(0, 0);
+        menuStorePresenterLogic.getMenu(storeModel.getMaquanan());
     }
 
     @Override
@@ -212,12 +212,12 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         int id = view.getId();
         switch (id) {
             case R.id.khungchuyenhuongMap:
-                Intent iDirection = new Intent(ChiTietQuanAnActivity.this, DirectionMapStoreActivity.class);
-                iDirection.putExtra("latitute", storeModel.getBranchModelList().get(0).getLatitude());
-                iDirection.putExtra("longtitute", storeModel.getBranchModelList().get(0).getLongitude());
-                Log.d("check", storeModel.getBranchModelList().get(0).getLatitude() + "-" + storeModel.getBranchModelList().get(0).getLongitude());
-                startActivity(iDirection);
-                break;
+            Intent iDirection = new Intent(ChiTietQuanAnActivity.this, DirectionMapStoreActivity.class);
+            iDirection.putExtra("latitute", storeModel.getBranchModelList().get(0).getLatitude());
+            iDirection.putExtra("longtitute", storeModel.getBranchModelList().get(0).getLongitude());
+            Log.d("check", storeModel.getBranchModelList().get(0).getLatitude() + "-" + storeModel.getBranchModelList().get(0).getLongitude());
+            startActivity(iDirection);
+            break;
             case R.id.btnComment:
                 Intent iComment = new Intent(ChiTietQuanAnActivity.this, AddCommentActivity.class);
                 iComment.putExtra("key_store", storeModel.getMaquanan());
@@ -247,13 +247,10 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public void getMenu(List<CategoryStoreModel> list) {
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewMenu.setLayoutManager(layoutManager);
-        adapterRecycleViewMenuStore = new AdapterRecycleViewMenuStore(this,list);
+        adapterRecycleViewMenuStore = new AdapterRecycleViewMenuStore(this, list);
         recyclerViewMenu.setAdapter(adapterRecycleViewMenuStore);
         adapterRecycleViewMenuStore.notifyDataSetChanged();
     }
 }
-
-
-

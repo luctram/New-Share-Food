@@ -18,12 +18,11 @@ public class ProductDetailPresenter implements LoadProductDetailListener {
         this.productDetailInteractor = new ProductDetailInteractor(this, context);
     }
 
-    public void loadProductDetail(String id, String image_id, String owner_id, String ownerImage_id) {
+    public void loadProductDetail(String id, String image_id, String owner_id) {
         productDetailView.showProgress();
         productDetailInteractor.loadProductDetail(id);
         productDetailInteractor.loadImageProductDetail(image_id);
         productDetailInteractor.loadOwnerDetail(owner_id);
-        productDetailInteractor.loadImageOwner(ownerImage_id);
         productDetailView.setCheckedSave(productDetailInteractor.isExistItemSQlite(id));
     }
 

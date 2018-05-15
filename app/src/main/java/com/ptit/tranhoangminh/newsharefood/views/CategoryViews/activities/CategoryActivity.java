@@ -28,7 +28,7 @@ import com.ptit.tranhoangminh.newsharefood.views.ProductViews.activities.Product
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryActivity extends AppCompatActivity implements com.ptit.tranhoangminh.newsharefood.views.categoryViews.activities.CategoryView {
+public class CategoryActivity extends AppCompatActivity implements CategoryView {
 
     ListView lvMonAn;
     Toolbar toolbar;
