@@ -199,8 +199,6 @@
 
 
             </LinearLayout>
-            <include layout="@layout/tinhnang_store_layout"></include>
-            <include layout="@layout/layout_comment"> </include>
 
             <Button
                 android:id="@+id/btnComment"
