@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.ProductViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.productViews.activities;
 
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 

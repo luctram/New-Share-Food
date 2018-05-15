@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.fragments;
+package com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments;
 
 
 import android.os.Bundle;
