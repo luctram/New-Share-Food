@@ -201,8 +201,14 @@
             </LinearLayout>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+            <include layout="@layout/tinhnang_store_layout"></include>
+            <include layout="@layout/layout_comment"> </include>
+=======
+>>>>>>> parent of 64a4c77... .
+=======
             <include layout="@layout/tinhnang_store_layout"></include>
             <include layout="@layout/layout_comment"> </include>
 =======
