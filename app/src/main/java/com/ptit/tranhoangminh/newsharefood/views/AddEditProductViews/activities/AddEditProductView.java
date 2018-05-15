@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities;
 
 import android.graphics.Bitmap;
 

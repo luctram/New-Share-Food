@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.productViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.ProductViews.activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -22,14 +22,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities.AddEditProductActivity;
 import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SeachViewActivity;
-import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductActivity;
-import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
+import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.activities.NewProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.presenters.productPresenters.ProductPresenter;
 import com.ptit.tranhoangminh.newsharefood.adapters.ProductAdapter;
-import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductActivity;
+import com.ptit.tranhoangminh.newsharefood.views.SavedProductViews.activities.SavedProductActivity;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
-import com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities.AddEditProductView;
+import com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities.AddEditProductView;
 
 public class AddEditProductPresenter implements LoadAddEditProductListener {
     private AddEditProductView addEditProductView;

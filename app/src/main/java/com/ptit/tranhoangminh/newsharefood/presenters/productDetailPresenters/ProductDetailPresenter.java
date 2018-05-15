@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import com.ptit.tranhoangminh.newsharefood.models.MemberModel;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
-import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.ProductDetailView;
+import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.activities.ProductDetailView;
 
 public class ProductDetailPresenter implements LoadProductDetailListener {
     private ProductDetailView productDetailView;

@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,6 +28,7 @@ import com.ptit.tranhoangminh.newsharefood.models.MemberModel;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 import com.ptit.tranhoangminh.newsharefood.presenters.productDetailPresenters.ProductDetailPresenter;
+import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.activities.ProductDetailView;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.CommentFragment;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.MaterialFragment;
 import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.RecipeFragment;

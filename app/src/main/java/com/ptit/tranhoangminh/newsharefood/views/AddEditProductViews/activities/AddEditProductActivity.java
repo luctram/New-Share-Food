@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.addEditProductViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 import com.ptit.tranhoangminh.newsharefood.presenters.addEditProductPresenters.AddEditProductPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.productViews.activities.ProductActivity;
+import com.ptit.tranhoangminh.newsharefood.views.ProductViews.activities.ProductActivity;
 
 import java.util.Calendar;
 

@@ -17,8 +17,8 @@ import com.ptit.tranhoangminh.newsharefood.adapters.ProductAdapter;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 
 import com.ptit.tranhoangminh.newsharefood.presenters.searchProductPresenters.SearchProductPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.activities.NewProductDetailActivity;
-import com.ptit.tranhoangminh.newsharefood.views.productViews.activities.ProductActivity;
+import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.activities.NewProductDetailActivity;
+import com.ptit.tranhoangminh.newsharefood.views.ProductViews.activities.ProductActivity;
 
 
 import java.util.ArrayList;

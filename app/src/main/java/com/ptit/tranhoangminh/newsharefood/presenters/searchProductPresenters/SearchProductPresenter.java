@@ -5,7 +5,7 @@ import android.content.Context;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.presenters.savedProductPresenters.SavedProductInteractor;
 import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SearchViewImp;
-import com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities.SavedProductView;
+import com.ptit.tranhoangminh.newsharefood.views.SavedProductViews.activities.SavedProductView;
 
 import java.util.List;
 
