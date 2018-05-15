@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,8 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ptit.tranhoangminh.newsharefood.presenters.DisplayStore.StoreInterface;
 
-import java.io.Serializable;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 

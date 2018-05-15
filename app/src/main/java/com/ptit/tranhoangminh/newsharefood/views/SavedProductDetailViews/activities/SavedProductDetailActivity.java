@@ -1,6 +1,5 @@
 package com.ptit.tranhoangminh.newsharefood.views.SavedProductDetailViews.activities;
 
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -20,8 +21,9 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
 import com.ptit.tranhoangminh.newsharefood.presenters.savedProductDetailPresenters.SavedProductDetailPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.fragments.MaterialFragment;
-import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.fragments.RecipeFragment;
+import com.ptit.tranhoangminh.newsharefood.views.SavedProductDetailViews.activities.SavedProductDetailView;
+import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.MaterialFragment;
+import com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments.RecipeFragment;
 
 import java.util.ArrayList;
 import java.util.List;

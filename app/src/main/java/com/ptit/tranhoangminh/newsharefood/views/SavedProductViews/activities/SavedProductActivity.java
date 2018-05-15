@@ -20,6 +20,7 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.adapters.SavedProductAdapter;
 import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
 import com.ptit.tranhoangminh.newsharefood.presenters.savedProductPresenters.SavedProductPresenter;
+import com.ptit.tranhoangminh.newsharefood.views.SavedProductViews.activities.SavedProductView;
 import com.ptit.tranhoangminh.newsharefood.views.SavedProductDetailViews.activities.SavedProductDetailActivity;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class SavedProductActivity extends AppCompatActivity implements SavedProductView {
     private List<ProductSQLite> productArrayList;
-    private SavedProductAdapter myAdapter;
+    private savedProductAdapter myAdapter;
     private GridView gridView;
     private ProgressBar pgbSavedProduct;
     private SavedProductPresenter savedProductPresenter;
@@ -93,7 +94,7 @@ public class SavedProductActivity extends AppCompatActivity implements SavedProd
     @Override
     public void displaySavedProducts(List<ProductSQLite> savedProductList) {
         this.productArrayList = savedProductList;
-        this.myAdapter = new SavedProductAdapter(this, R.layout.dong_products, productArrayList);
+        this.myAdapter = new savedProductAdapter(this, R.layout.dong_products, productArrayList);
         gridView.setAdapter(myAdapter);
     }
 

@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities.NewModifyProductActivity;
+import com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities.AddEditProductActivity;
 import com.ptit.tranhoangminh.newsharefood.views.SearchViews.SeachViewActivity;
 import com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.activities.NewProductDetailActivity;
 import com.ptit.tranhoangminh.newsharefood.R;
@@ -119,8 +119,10 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
                 break;
             case R.id.menuThemmon:
                 if (user!=null) {
-                    Intent intent = new Intent(ProductActivity.this, NewModifyProductActivity.class);
+                    Intent intent = new Intent(ProductActivity.this, AddEditProductActivity.class);
                     Bundle bundle = new Bundle();
+                    bundle.putString("cate_id", cate_id);
+                    bundle.putString("cate_name", cate_name);
                     bundle.putInt("mode", ADD_MODE);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 1111);
@@ -155,12 +157,12 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
         final Product pd = myAdapter.getItem((int) info.id);
         switch (item.getItemId()) {
             case R.id.menuSua:
-                Intent intent = new Intent(ProductActivity.this, NewModifyProductActivity.class);
+                Intent intent = new Intent(ProductActivity.this, AddEditProductActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("mode", EDIT_MODE);
                 bundle.putString("cate_id", cate_id);
                 bundle.putString("cate_name", cate_name);
                 bundle.putSerializable("product", pd);
+                bundle.putInt("mode", EDIT_MODE);
                 intent.putExtras(bundle);
                 startActivityForResult(intent, 1111);
                 break;
@@ -189,7 +191,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == 1111) {
+        if (requestCode == 1111) {
             productPresenter.loadProducts(cate_id);
         }
         super.onActivityResult(requestCode, resultCode, data);
