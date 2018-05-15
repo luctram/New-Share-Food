@@ -28,7 +28,6 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".views.Register.RegisterActivity" />
-        <activity android:name=".views.addEditProductViews.activities.AddEditProductActivity" />
         <activity android:name=".views.savedProductViews.activities.SavedProductActivity" />
         <activity android:name=".views.savedProductDetailViews.activities.SavedProductDetailActivity" />
         <activity android:name=".views.StoreDetail.ChiTietQuanAnActivity" />
