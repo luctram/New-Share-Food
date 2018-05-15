@@ -126,6 +126,14 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
                 finish();
             }
         });
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iDangNhap = new Intent(Splashscreen.this, LoginActivity.class);
+                startActivity(iDangNhap);
+                finish();
+            }
+        });
     }
 
     @Override
