@@ -1,8 +1,10 @@
 package com.ptit.tranhoangminh.newsharefood.views.AddEditProductViews.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -58,6 +60,7 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
     private Product pd;
     private ProductDetail pdetail;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +76,9 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
         registerForContextMenu(img);
         img.setLongClickable(false);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.BLACK);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         addEditProductPresenter = new AddEditProductPresenter(this);
         addEditProductPresenter.loadCategory();
 
@@ -139,6 +145,7 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
                             }
                         } else if (mode == ProductActivity.EDIT_MODE) {
                             pd.setName(edtName.getText().toString());
+                            pd.setParent_id(cate_id);
                             pdetail.setMaterials(material);
                             pdetail.setRecipe(recipe);
                             if (!changedPic) {
@@ -158,7 +165,7 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
                 }
                 return true;
             case android.R.id.home:
-
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -212,7 +219,6 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
 
     public void toggle_categories(View view) {
         if (frameCategory.isShown()) {
@@ -321,7 +327,8 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
 
     @Override
     public void backActivity() {
-        //super.onBackPressed();
+        setResult(1111);
+        finish();
     }
 
     @Override

@@ -59,7 +59,7 @@ public class NewProductDetailActivity extends AppCompatActivity implements Produ
         setControls();
 
         initPresenter();
-        productDetailPresenter.loadProductDetail(productKey.getId(), productKey.getImage(), productKey.getMember_id(), productKey.getImage());
+        productDetailPresenter.loadProductDetail(productKey.getId(), productKey.getImage(), productKey.getMember_id());
 
         setEvents();
 

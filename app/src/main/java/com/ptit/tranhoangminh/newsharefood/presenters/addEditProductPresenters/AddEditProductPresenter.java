@@ -20,6 +20,7 @@ public class AddEditProductPresenter implements LoadAddEditProductListener {
     }
 
     public void loadCategory(){
+        addEditProductView.hideProgress();
         this.addEditProductInteractor.createCategoryList();
     }
 

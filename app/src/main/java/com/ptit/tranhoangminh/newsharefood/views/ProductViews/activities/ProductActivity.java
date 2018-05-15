@@ -189,7 +189,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1111) {
+        if (resultCode == 1111) {
             productPresenter.loadProducts(cate_id);
         }
         super.onActivityResult(requestCode, resultCode, data);

@@ -150,15 +150,32 @@ public class AddEditProductInteractor {
         myRef.child("Products").child(product.getId()).setValue(product).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                myRef.child("ProductDetail").child(productDetail.getId()).setValue(productDetail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                                listener.onSetOldProductSuccess();
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
+                        for (DataSnapshot item : iterable) {
+                            final ProductDetail pdetailKey = item.getValue(ProductDetail.class);
+                            if (pdetailKey.getId().equals(productDetail.getId())) {
+                                item.getRef().setValue(productDetail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        listener.onSetOldProductSuccess();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        listener.onSetOldProductFailure("Failed to save product detail. " + e.getMessage());
+                                    }
+                                });
+                                return;
+                            }
+                        }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        listener.onSetOldProductFailure("Failed to save product detail. " + e.getMessage());
+                    public void onCancelled(DatabaseError databaseError) {
+                        listener.onSetOldProductFailure("Failed to find product detail. " + databaseError.getMessage());
                     }
                 });
             }
@@ -174,37 +191,49 @@ public class AddEditProductInteractor {
         myRef.child("Products").child(product.getId()).setValue(product).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                myRef.child("ProductDetail").child(productDetail.getId()).setValue(productDetail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                myRef.child("ProductDetail").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                        byte[] data = baos.toByteArray();
-                        UploadTask uploadTask = mStorageRef.child("Products").child(product.getImage()).putBytes(data);
-                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                //Uri downloadURL = taskSnapshot.getDownloadUrl();
-                                listener.onSetOldProductSuccess();
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
+                        for (DataSnapshot item : iterable) {
+                            final ProductDetail pdetailKey = item.getValue(ProductDetail.class);
+                            if (pdetailKey.getId().equals(productDetail.getId())) {
+                                item.getRef().setValue(productDetail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                                        byte[] data = baos.toByteArray();
+                                        UploadTask uploadTask = mStorageRef.child("Products").child(product.getImage()).putBytes(data);
+                                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                //Uri downloadURL = taskSnapshot.getDownloadUrl();
+                                                listener.onSetOldProductSuccess();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                listener.onSetOldProductFailure("Failed to write image. " + e.getMessage());
+                                            }
+                                        });
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        listener.onSetOldProductFailure("Failed to save product detail. " + e.getMessage());
+                                    }
+                                });
+                                return;
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                listener.onSetOldProductFailure("Failed to write image. " + e.getMessage());
-                            }
-                        });
+                        }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        listener.onSetOldProductFailure("Failed to save product detail. " + e.getMessage());
+                    public void onCancelled(DatabaseError databaseError) {
+                        listener.onSetOldProductFailure("Failed to find product detail. " + databaseError.getMessage());
                     }
                 });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                listener.onSetOldProductFailure("Failed to save product. " + e.getMessage());
             }
         });
     }
