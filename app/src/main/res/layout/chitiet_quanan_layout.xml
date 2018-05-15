@@ -200,9 +200,14 @@
 
             </LinearLayout>
 
+<<<<<<< HEAD
             <include layout="@layout/tinhnang_store_layout"></include>
             <include layout="@layout/layout_comment"> </include>
+<<<<<<< HEAD
             
+=======
+=======
+>>>>>>> parent of 64a4c77... .
             <Button
                 android:id="@+id/btnComment"
                 android:layout_width="100dp"
