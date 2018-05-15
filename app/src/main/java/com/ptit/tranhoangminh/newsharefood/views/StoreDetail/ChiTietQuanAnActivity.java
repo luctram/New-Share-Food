@@ -40,6 +40,7 @@ import com.ptit.tranhoangminh.newsharefood.models.CategoryStoreModel;
 import com.ptit.tranhoangminh.newsharefood.models.StoreModel;
 import com.ptit.tranhoangminh.newsharefood.models.UtilitiesModel;
 import com.ptit.tranhoangminh.newsharefood.presenters.menuStorePresenters.MenuStorePresenterLogic;
+import com.ptit.tranhoangminh.newsharefood.views.AddComment.AddCommentActivity;
 import com.ptit.tranhoangminh.newsharefood.views.DirectionMap.DirectionMapStoreActivity;
 import com.ptit.tranhoangminh.newsharefood.views.Orderfood.MyCartActivity;
 

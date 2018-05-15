@@ -13,12 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.R;
+import com.ptit.tranhoangminh.newsharefood.models.Category;
 import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductDetail;
 import com.ptit.tranhoangminh.newsharefood.presenters.addEditProductPresenters.AddEditProductPresenter;
 import com.ptit.tranhoangminh.newsharefood.views.ProductViews.activities.ProductActivity;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class AddEditProductActivity extends Activity implements AddEditProductView {
 
@@ -179,7 +181,17 @@ public class AddEditProductActivity extends Activity implements AddEditProductVi
     }
 
     @Override
+    public void displayCategoryList(List<Category> categories) {
+
+    }
+
+    @Override
     public void backActivity() {
         AddEditProductActivity.super.onBackPressed();
+    }
+
+    @Override
+    public void setCategory(Category category) {
+
     }
 }
