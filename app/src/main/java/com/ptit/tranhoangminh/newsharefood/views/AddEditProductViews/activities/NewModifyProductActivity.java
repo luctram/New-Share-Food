@@ -238,7 +238,6 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
         } else {
             frameMaterial.setVisibility(View.VISIBLE);
             slide_down(this, frameMaterial);
-            move_down(this, txtRecipe);
         }
     }
 
@@ -281,17 +280,6 @@ public class NewModifyProductActivity extends AppCompatActivity implements AddEd
 
     void slide_up(Context context, View v) {
         Animation a = AnimationUtils.loadAnimation(context, R.anim.slide_up);
-        if (a != null) {
-            a.reset();
-            if (v != null) {
-                v.clearAnimation();
-                v.startAnimation(a);
-            }
-        }
-    }
-
-    void move_down(Context context, View v) {
-        Animation a = AnimationUtils.loadAnimation(context, R.anim.move_down);
         if (a != null) {
             a.reset();
             if (v != null) {
