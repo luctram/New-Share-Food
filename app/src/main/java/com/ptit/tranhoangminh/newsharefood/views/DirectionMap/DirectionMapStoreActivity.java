@@ -17,7 +17,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.presenters.polylinePresenters.DirectionMapPresenterLogic;
 
-public class DirectionMapStoreActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+import java.util.List;
+
+
+public class DirectionMapStoreActivity extends AppCompatActivity implements OnMapReadyCallback,DirectionImp  {
     GoogleMap googleMap;
     MapFragment mapFragment;
     double latitue;
@@ -41,7 +45,9 @@ public class DirectionMapStoreActivity extends AppCompatActivity implements OnMa
         current_location.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude", "0")));
         current_location.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude", "0")));
 
-        link="https://maps.googleapis.com/maps/api/directions/json?origin=" + current_location.getLatitude() + "," + current_location.getLongitude() + "&destination=" +latitue+"," + longtitute + "&language=vi&key=AIzaSyCPMjB01i28rWRigg3l_a_pHLs27WnKGz4";
+
+        link = "https://maps.googleapis.com/maps/api/directions/json?origin=" + current_location.getLatitude() + "," + current_location.getLongitude() + "&destination=" + latitue + "," + longtitute + "&language=vi&key=AIzaSyBIZGjL6zFg5ukQr0ymPhz7ZLpje-cCMkw";
+        // link="https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCPMjB01i28rWRigg3l_a_pHLs27WnKGz4";
 
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -57,7 +63,18 @@ public class DirectionMapStoreActivity extends AppCompatActivity implements OnMa
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15);
         googleMap.moveCamera(cameraUpdate);
 
-        DirectionMapPresenterLogic directionMapPresenterLogic=new DirectionMapPresenterLogic();
-        directionMapPresenterLogic.getRoadToStore(googleMap,link);
+        directionMapPresenterLogic.getRoadToStore(googleMap, link);
+
+    }
+
+    @Override
+    public void GetListToaDo(List<LatLng> latLngList) {
+        PolylineOptions polylineOptions = new PolylineOptions();
+        polylineOptions.width(15);
+        polylineOptions.color(Color.RED);
+        for (LatLng value : latLngList) {
+            polylineOptions.add(value);
+        }
+        Polyline polyline = googleMap.addPolyline(polylineOptions);
     }
 }
