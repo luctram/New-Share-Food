@@ -15,7 +15,7 @@
         android:background="@drawable/khung_dangnhap"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:hint="Find"
+        android:hint="Tim kiem mon an"
         android:drawableRight="@drawable/ic_search_black_24dp"
         android:drawablePadding="10dp"
         android:paddingRight="10dp"
@@ -91,6 +91,13 @@
         android:drawableLeft="@drawable/user30"
         android:paddingLeft="18dp"
         />
+    
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vp"
+        >
+    </android.support.v4.view.ViewPager>
 
 
 </RelativeLayout>
