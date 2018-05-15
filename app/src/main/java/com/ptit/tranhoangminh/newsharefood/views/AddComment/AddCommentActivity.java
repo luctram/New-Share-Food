@@ -112,7 +112,7 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void getresult(String s) {
-        Toast.makeText(this, "Thêm bình luận thành công", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Thêm bình luận thành công..", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent();
         intent.putExtra("result","Thêm thành công");
         setResult(REQUEST_CODE_SET_COMMENT,intent);
