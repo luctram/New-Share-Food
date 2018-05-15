@@ -19,7 +19,7 @@ import com.ptit.tranhoangminh.newsharefood.R;
 import com.ptit.tranhoangminh.newsharefood.models.CommentModel;
 import com.ptit.tranhoangminh.newsharefood.presenters.saveCommentForStorePresenters.SaveCommentStorePresenterLogic;
 
-public class AddCommentActivity extends AppCompatActivity implements View.OnClickListener,AddCommentImp {
+public class AddCommentActivity extends AppCompatActivity implements View.OnClickListener,AddCommentImp{
     TextView txtNameStore, txtAddressStore, txtPost_comment;
     Toolbar toolbar;
     ImageButton image_Comment;

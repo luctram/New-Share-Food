@@ -1,5 +1,6 @@
-package com.ptit.tranhoangminh.newsharefood.views.SavedProductViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities;
 
+import com.ptit.tranhoangminh.newsharefood.models.Product;
 import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
 
 import java.util.List;
