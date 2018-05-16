@@ -9,10 +9,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -25,7 +27,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.ptit.tranhoangminh.newsharefood.R;
 
 public class VideoFragment extends Fragment {
-    private YouTubePlayerSupportFragment yotubeView;
+    private YouTubePlayerSupportFragment youtubeView;
 
     public static final String DEVELOPER_KEY = "AIzaSyCXxzA6GYjA06SKE1g8r9guO30u0DHxdqM";
 
@@ -38,20 +40,20 @@ public class VideoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video, null);
-        yotubeView = YouTubePlayerSupportFragment.newInstance();
+        youtubeView = YouTubePlayerSupportFragment.newInstance();
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.add(R.id.youtube_layout, yotubeView).commit();
+        transaction.add(R.id.youtube_layout, youtubeView).commit();
         return view;
     }
 
     public void setVideoId(final String id) {
-        yotubeView.initialize(DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
+        if (youtubeView == null) return;
+        youtubeView.initialize(DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 if (!b) {
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-                    youTubePlayer.setFullscreen(true);
                     youTubePlayer.loadVideo(id);
                     youTubePlayer.play();
                 }

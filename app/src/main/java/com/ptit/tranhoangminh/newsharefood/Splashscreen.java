@@ -26,7 +26,8 @@ import com.ptit.tranhoangminh.newsharefood.views.CategoryViews.activities.Catego
  * Created by Dell on 3/12/2018.
  */
 
-public class Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class
+Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     Button btnVaobep, btnDangNhap;
     GoogleApiClient googleApiClient;
     public static final int REQUEST_PERMISSION_LOCATION = 1;
@@ -120,7 +121,7 @@ public class Splashscreen extends AppCompatActivity implements GoogleApiClient.C
         btnVaobep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iDangNhap = new Intent(Splashscreen.this, CategoryActivity.class);
+                Intent iDangNhap = new Intent(Splashscreen.this, MainActivity.class);
                 startActivity(iDangNhap);
                 finish();
             }
