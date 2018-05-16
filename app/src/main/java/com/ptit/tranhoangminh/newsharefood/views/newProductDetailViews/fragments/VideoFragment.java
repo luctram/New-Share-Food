@@ -1,25 +1,36 @@
 package com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.fragments;
 
 
+
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v4.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.MediaController;
+
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.ptit.tranhoangminh.newsharefood.R;
 
-public class VideoFragment extends Fragment{
-    VideoView videoView;
-    String videoURL;
-    @Override
+public class VideoFragment extends Fragment {
+    private YouTubePlayerSupportFragment youtubeView;
+
+    public static final String DEVELOPER_KEY = "AIzaSyCXxzA6GYjA06SKE1g8r9guO30u0DHxdqM";
+
+   @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -28,11 +39,30 @@ public class VideoFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video,null);
-        videoView = view.findViewById(R.id.videoView);
-        videoURL="http://www.youtubemaza.com/files/data/366/Tom%20And%20Jerry%20055%20Casanova%20Cat%20(1951).mp4";
-        Uri video = Uri.parse(videoURL);
-        videoView.setVideoURI(video);
+        youtubeView = YouTubePlayerSupportFragment.newInstance();
+
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.add(R.id.youtube_layout, youtubeView).commit();
         return view;
     }
 
+    public void setVideoId(final String id) {
+        if (youtubeView == null) return;
+        youtubeView.initialize(DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                if (!b) {
+                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
+                    youTubePlayer.loadVideo(id);
+                    youTubePlayer.play();
+                }
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+                String errorMessage = youTubeInitializationResult.toString();
+                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }
