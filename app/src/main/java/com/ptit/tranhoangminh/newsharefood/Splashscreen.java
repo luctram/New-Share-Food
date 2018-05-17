@@ -2,7 +2,6 @@ package com.ptit.tranhoangminh.newsharefood;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -21,13 +20,14 @@ import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.ptit.tranhoangminh.newsharefood.views.CategoryViews.activities.CategoryActivity;
+import com.ptit.tranhoangminh.newsharefood.presenters.Mail.SendMail;
 
 /**
  * Created by Dell on 3/12/2018.
  */
 
-public class
-Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     Button btnVaobep, btnDangNhap;
     GoogleApiClient googleApiClient;
     public static final int REQUEST_PERMISSION_LOCATION = 1;
@@ -41,6 +41,10 @@ Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen_layout);
         AnhXa();
+
+        // test send mail
+        sendEmail();
+
         //tạo 1 api yeu cau truy cap location service
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -121,7 +125,7 @@ Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCall
         btnVaobep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iDangNhap = new Intent(Splashscreen.this, MainActivity.class);
+                Intent iDangNhap = new Intent(Splashscreen.this, CategoryActivity.class);
                 startActivity(iDangNhap);
                 finish();
             }
@@ -161,5 +165,13 @@ Splashscreen extends AppCompatActivity implements GoogleApiClient.ConnectionCall
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+    }
+
+    private void sendEmail() {
+        //Creating SendMail object
+        SendMail sm = new SendMail(this, "abc@gmail.com", "test mail", "hello");
+
+        //Executing sendmail to send email
+        sm.execute();
     }
 }

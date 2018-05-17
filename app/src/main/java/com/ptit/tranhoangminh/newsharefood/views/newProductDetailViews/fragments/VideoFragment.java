@@ -1,7 +1,6 @@
 package com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.fragments;
 
 
-
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -10,11 +9,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -26,11 +25,11 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.ptit.tranhoangminh.newsharefood.R;
 
 public class VideoFragment extends Fragment {
-    private YouTubePlayerSupportFragment youtubeView;
+    private YouTubePlayerSupportFragment yotubeView;
 
     public static final String DEVELOPER_KEY = "AIzaSyCXxzA6GYjA06SKE1g8r9guO30u0DHxdqM";
 
-   @Override
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -38,17 +37,16 @@ public class VideoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_video,null);
-        youtubeView = YouTubePlayerSupportFragment.newInstance();
+        View view = inflater.inflate(R.layout.fragment_video, null);
+        yotubeView = YouTubePlayerSupportFragment.newInstance();
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.add(R.id.youtube_layout, youtubeView).commit();
+        transaction.add(R.id.youtube_layout, yotubeView).commit();
         return view;
     }
 
     public void setVideoId(final String id) {
-        if (youtubeView == null) return;
-        youtubeView.initialize(DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
+        yotubeView.initialize(DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 if (!b) {
