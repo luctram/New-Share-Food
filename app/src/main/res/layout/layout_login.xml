@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="#FBFCFC"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="left"
+
+        android:src="@drawable/exit_03"
+        android:onClick="setOnclickHomeListener"
+        />
+    <TextView
+        android:id="@+id/txtTieuDeToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Login"
+        android:textColor="#000"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/txtTieuDeLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_gravity="right"
+        android:textColor="#7fba55"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginRight="20sp"
+
+        android:onClick="setOnclickRegisterListener"
+
+        />
+</android.support.v7.widget.Toolbar>

@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.savedProductViews.activities;
+package com.ptit.tranhoangminh.newsharefood.views.SavedProductViews.activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -17,21 +17,20 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ptit.tranhoangminh.newsharefood.R;
-import com.ptit.tranhoangminh.newsharefood.adapters.savedProductAdapter;
+import com.ptit.tranhoangminh.newsharefood.adapters.SavedProductAdapter;
 import com.ptit.tranhoangminh.newsharefood.models.ProductSQLite;
 import com.ptit.tranhoangminh.newsharefood.presenters.savedProductPresenters.SavedProductPresenter;
-import com.ptit.tranhoangminh.newsharefood.views.savedProductDetailViews.activities.SavedProductDetailActivity;
+import com.ptit.tranhoangminh.newsharefood.views.SavedProductDetailViews.activities.SavedProductDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SavedProductActivity extends AppCompatActivity implements SavedProductView {
     private List<ProductSQLite> productArrayList;
-    private savedProductAdapter myAdapter;
+    private SavedProductAdapter myAdapter;
     private GridView gridView;
     private ProgressBar pgbSavedProduct;
     private SavedProductPresenter savedProductPresenter;
-    private Toolbar toolbar;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -42,12 +41,6 @@ public class SavedProductActivity extends AppCompatActivity implements SavedProd
 
         initPresenter();
         savedProductPresenter.loadAllSavedProducts();
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("MÓN ĂN ĐÃ LƯU");
-        toolbar.setTitleTextColor(Color.BLACK);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         registerForContextMenu(gridView);
         setEvents();
@@ -68,7 +61,6 @@ public class SavedProductActivity extends AppCompatActivity implements SavedProd
         gridView = findViewById(R.id.gridview);
         pgbSavedProduct = findViewById(R.id.progressBarProduct);
         productArrayList = new ArrayList<>();
-        toolbar = findViewById(R.id.toolbarLoaiMonAn);
     }
 
     private void initPresenter() {
@@ -93,7 +85,7 @@ public class SavedProductActivity extends AppCompatActivity implements SavedProd
     @Override
     public void displaySavedProducts(List<ProductSQLite> savedProductList) {
         this.productArrayList = savedProductList;
-        this.myAdapter = new savedProductAdapter(this, R.layout.dong_products, productArrayList);
+        this.myAdapter = new SavedProductAdapter(this, R.layout.dong_products, productArrayList);
         gridView.setAdapter(myAdapter);
     }
 

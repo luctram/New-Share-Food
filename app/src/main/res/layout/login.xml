@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <include
+        layout="@layout/layout_login"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:layout_marginTop="25sp"
+        android:orientation="vertical"
+
+        >
+
+            <EditText
+                android:id="@+id/edtEmailLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20sp"
+                android:background="@drawable/borderradius"
+                android:drawableRight="@mipmap/sd_03"
+                android:hint="Email"
+                android:layout_marginBottom="20dp"
+
+                />
+
+            <EditText
+                android:id="@+id/edtPassLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20sp"
+                android:background="@drawable/borderradius"
+                android:drawableRight="@mipmap/foodapp_07"
+                android:hint="Password"
+                android:password="true"
+
+                />
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50sp"
+        android:padding="20sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/footer_18"
+            android:text="Login"
+            android:textColor="#FFF"
+            android:textSize="20dp"
+            android:layout_marginBottom="50dp"
+            />
+
+        <Button
+            android:id="@+id/btnGoogleLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ccc"
+            android:text="Login Google"
+            android:textColor="#FFF"
+            android:textSize="20dp"
+
+            />
+        <TextView
+            android:id="@+id/idResetPassword"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="forgot password"
+            android:textSize="18dp"
+            android:textColor="#7fba55"
+            android:textStyle="italic"
+            />
+    </LinearLayout>
+
+</LinearLayout>

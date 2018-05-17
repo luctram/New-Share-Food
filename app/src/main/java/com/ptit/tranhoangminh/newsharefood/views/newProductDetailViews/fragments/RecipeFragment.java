@@ -1,4 +1,4 @@
-package com.ptit.tranhoangminh.newsharefood.views.newProductDetailViews.fragments;
+package com.ptit.tranhoangminh.newsharefood.views.NewProductDetailViews.fragments;
 
 
 import android.os.Bundle;
@@ -38,6 +38,6 @@ public class RecipeFragment extends Fragment {
     }
 
     public void setRecipe(String recipe) {
-        tvRecipe.setText(recipe);
+        if (tvRecipe != null) tvRecipe.setText(recipe);
     }
 }
